@@ -31,13 +31,14 @@
   --danger: #a4472c;
   --danger-soft: #f8e7e1;
   --ok: #2d7a4f;
-  --btn: #b38a3a;        /* было #0f3b5a, тёмно-синий */
-  --btn-ink: #10161c;    /* текст стал тёмным: белый на золоте не читался */
-  --btn-hover: #c49b47;  /* при наведении кнопка светлеет */
+  --btn: #b38a3a;
+  --btn-ink: #10161c;
+  --btn-hover: #c49b47;
   --focus: #1e7d82;
-  --band: #0c2436;
-  --band-ink: #f2ecdf;
-  --band-muted: #a9bccb;
+  /* Thème clair : plus de bandeau bleu — le bandeau reprend le nude du site. */
+  --band: #e3dbcc;
+  --band-ink: #0f1b24;
+  --band-muted: #4f5c67;
   --shadow-s: 0 1px 2px rgb(15 27 36 / 0.05), 0 2px 8px rgb(15 27 36 / 0.04);
   --shadow-m: 0 2px 6px rgb(15 27 36 / 0.06), 0 14px 36px rgb(15 27 36 / 0.08);
   --shadow-l: 0 8px 24px rgb(15 27 36 / 0.08), 0 30px 70px rgb(15 27 36 / 0.12);
@@ -203,6 +204,17 @@
 }
 .section--band .lead, .section--band .muted { color: var(--band-muted); }
 .section--band .eyebrow { color: var(--gold); }
+
+/* Bandeau clair : ce qui était prévu pour un fond sombre doit s'assombrir. */
+:root:not([data-theme='dark']) .section--band .eyebrow,
+:root:not([data-theme='dark']) .band .eyebrow { color: var(--gold-ink); }
+:root:not([data-theme='dark']) .section--band { --line: #cec2a9; --line-2: #b7a98b; }
+:root:not([data-theme='dark']) .cities--band .city-card__go { border-color: var(--line-2); }
+:root:not([data-theme='dark']) .cities--band .city-card__meta { color: var(--gold-ink); }
+/* Le bandeau « Prêt à choisir une date ? » colle au pied de page : on l'éclaircit pour garder la césure. */
+:root:not([data-theme='dark']) .band { background: var(--bg); border-block: 1px solid var(--line); }
+:root:not([data-theme='dark']) .band .btn--primary { background: var(--btn); color: var(--btn-ink); }
+:root:not([data-theme='dark']) .band .btn--primary:hover { background: var(--btn-hover); }
 
 .sec-head { display: grid; gap: 18px; margin-bottom: clamp(40px, 5vw, 68px); }
 .sec-head--split { grid-template-columns: 1fr; align-items: end; }
