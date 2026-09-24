@@ -31,9 +31,9 @@
   --danger: #a4472c;
   --danger-soft: #f8e7e1;
   --ok: #2d7a4f;
-  --btn: #0f3b5a;
-  --btn-ink: #ffffff;
-  --btn-hover: #0a2b42;
+  --btn: #b38a3a;        /* было #0f3b5a, тёмно-синий */
+  --btn-ink: #10161c;    /* текст стал тёмным: белый на золоте не читался */
+  --btn-hover: #c49b47;  /* при наведении кнопка светлеет */
   --focus: #1e7d82;
   --band: #0c2436;
   --band-ink: #f2ecdf;
