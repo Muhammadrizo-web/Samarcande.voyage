@@ -77,9 +77,11 @@ export function Header({ locale, labels }: { locale: Locale; labels: HeaderLabel
       raf = requestAnimationFrame(() => {
         const y = window.scrollY;
         setStuck(y > 12);
-        // en mode « une section par écran », l'en-tête reste visible : chaque écran est calé dessous
+        // En mode « une section par écran » et sur téléphone/tablette (menu toujours
+        // affiché), l'en-tête ne se cache jamais : pas de va-et-vient au défilement.
         const paging = document.documentElement.classList.contains('paging-on');
-        setHidden(!paging && y > 480 && y > last + 4);
+        const compact = window.matchMedia('(max-width: 1119px)').matches;
+        setHidden(!paging && !compact && y > 480 && y > last + 4);
         if (y < last - 4) setHidden(false);
         last = y;
       });

@@ -887,3 +887,66 @@
   .hero__cta .btn { flex: 1 1 100%; }
   .section { padding-block: 72px; }
 }
+
+/* ==========================================================================
+   Téléphone et tablette : menu toujours visible (plus de tiroir animé)
+   ========================================================================== */
+
+@media (max-width: 1119px) {
+  :root { --hdr-h: 100px; }
+  .hdr {
+    height: auto;
+    background: color-mix(in srgb, var(--bg) 93%, transparent);
+    -webkit-backdrop-filter: saturate(1.4) blur(14px);
+    backdrop-filter: saturate(1.4) blur(14px);
+    box-shadow: 0 1px 0 var(--line);
+    transition: none;
+  }
+  .hdr.is-stuck { --hdr-h: 100px; }
+  .hdr.is-hidden { transform: none; }
+  /* Ligne 1 : marque + langue + thème. Ligne 2 : menu (défilement latéral) + bouton « Réserver ». */
+  .hdr__in {
+    height: auto; display: grid; align-items: center; gap: 2px 8px;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-areas: 'brand lang theme' 'nav nav cta';
+    padding-top: 8px;
+  }
+  /* sans min-width: 0, le menu défilant élargit la colonne et pousse le reste */
+  .hdr__in > * { min-width: 0; }
+  .brand { grid-area: brand; }
+  .hdr__tools { display: contents; }
+  .hdr .lang { grid-area: lang; justify-self: end; }
+  .hdr .theme-btn { grid-area: theme; justify-self: end; }
+  .hdr__cta { grid-area: cta; justify-self: end; align-self: start; }
+  .nav {
+    grid-area: nav; display: flex; align-items: center; width: 100%;
+    margin-left: calc(var(--gutter) * -1);
+    padding: 0 10px 10px var(--gutter); gap: 20px;
+    overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none;
+    /* le dégradé à droite montre qu'il reste des rubriques à faire défiler */
+    mask-image: linear-gradient(90deg, #000 86%, transparent);
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { white-space: nowrap; font-size: 13.5px; padding-block: 6px; }
+  .hdr__cta { display: inline-flex; }
+  .burger, .drawer { display: none !important; }
+}
+
+@media (max-width: 560px) {
+  :root { --hdr-h: 96px; }
+  .hdr.is-stuck { --hdr-h: 96px; }
+  /* Téléphone : « Réserver » monte sur la 1re ligne, le menu prend toute la largeur. */
+  .hdr__in { gap: 2px 8px; grid-template-areas: 'brand lang cta' 'nav nav nav'; }
+  /* Sur téléphone le thème suit le réglage du système : le bouton laisse la place au menu. */
+  .hdr .theme-btn { display: none; }
+  .hdr .lang { display: block; }
+  /* globe seul : le libellé de langue est déjà dans aria-label */
+  .lang__btn { height: 38px; padding: 0 9px; gap: 0; font-size: 0; }
+  .lang__btn svg:last-of-type { display: none; }
+  .icon-btn.theme-btn { width: 38px; height: 38px; }
+  .hdr__cta { --bh: 38px; padding: 0 14px; font-size: 12.5px; align-self: center; }
+  .brand__name { font-size: 17px; letter-spacing: 0.1em; }
+  .brand__sub { font-size: 8.5px; letter-spacing: 0.34em; }
+  .nav { gap: 16px; }
+  .nav a { font-size: 13px; }
+}
