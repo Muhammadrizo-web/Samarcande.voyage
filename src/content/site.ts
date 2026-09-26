@@ -48,7 +48,7 @@ export const FORMS = {
    * с любого хостинга. Оставить пустым, чтобы работал `functions/api/lead.ts`
    * (Telegram + Resend на Cloudflare). Ключ публичный, его видно в коде страницы.
    */
-  web3formsKey: '',
+  web3formsKey: 'c6f310f2-fb69-4271-a016-3d4960fd6227',
 } as const;
 
 /**
