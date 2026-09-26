@@ -41,6 +41,14 @@ export const FORMS = {
   endpoint: process.env.NEXT_PUBLIC_LEAD_ENDPOINT || '/api/lead',
   /** Aperçus uniquement : les formulaires simulent l'envoi et le disent. */
   demo: process.env.NEXT_PUBLIC_DEMO_FORMS === '1',
+  /**
+   * Мгновенный способ получать заявки на почту, без сервера.
+   * Получить ключ: web3forms.com → ввести рабочую почту → ключ придёт письмом.
+   * Вставить его сюда — и все формы будут слать заявки на эту почту
+   * с любого хостинга. Оставить пустым, чтобы работал `functions/api/lead.ts`
+   * (Telegram + Resend на Cloudflare). Ключ публичный, его видно в коде страницы.
+   */
+  web3formsKey: '',
 } as const;
 
 /**

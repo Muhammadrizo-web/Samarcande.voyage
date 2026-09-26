@@ -17,6 +17,39 @@ export type LeadPayload = {
   page: string;
 };
 
+const TITLES: Record<LeadType, string> = {
+  booking: 'Réservation',
+  contact: 'Message',
+  waitlist: 'Liste d’attente',
+};
+
+/**
+ * Envoi direct par Web3Forms : aucune fonction serveur n'est nécessaire,
+ * la demande arrive dans la boîte mail de l'agence depuis n'importe quel
+ * hébergement. Utilisé dès que FORMS.web3formsKey est renseigné.
+ */
+async function sendViaWeb3Forms(p: LeadPayload, signal: AbortSignal): Promise<LeadResult> {
+  const res = await fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    signal,
+    body: JSON.stringify({
+      access_key: FORMS.web3formsKey,
+      subject: `${TITLES[p.type]} — ${p.name || p.email}`,
+      from_name: SITE.name,
+      email: p.email,
+      replyto: p.email,
+      botcheck: p.website ? true : undefined,
+      message: p.summary,
+      langue: p.locale.toUpperCase(),
+      page: p.page,
+    }),
+  });
+  if (!res.ok) return 'error';
+  const json = (await res.json().catch(() => ({}))) as { success?: boolean };
+  return json.success ? 'ok' : 'error';
+}
+
 export async function sendLead(p: LeadPayload): Promise<LeadResult> {
   if (FORMS.demo) {
     await new Promise((r) => setTimeout(r, 700));
@@ -25,6 +58,7 @@ export async function sendLead(p: LeadPayload): Promise<LeadResult> {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 15000);
   try {
+    if (FORMS.web3formsKey) return await sendViaWeb3Forms(p, ctrl.signal);
     const res = await fetch(FORMS.endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
