@@ -413,7 +413,7 @@ const fr = {
         'Chez Samarcande Voyage, nous organisons des voyages authentiques, personnalisés et accessibles, accompagnés par des professionnels locaux francophones passionnés par leur pays.',
       ],
       quoteLabel: 'Notre ambition',
-      quote: 'Vous faire découvrir l’Ouzbékistan comme un invité, et non comme un simple touriste.',
+      quote: 'Notre ambition : vous faire découvrir l’Ouzbékistan comme un invité, et non comme un simple touriste.',
     },
     why: {
       eyebrow: 'Pourquoi nous',
@@ -429,7 +429,7 @@ const fr = {
     discover: {
       eyebrow: 'Destinations',
       title: 'Un voyage, mille découvertes',
-      lead: 'Découvrez les trésors de l’Ouzbékistan.',
+      lead: 'Découvrez les trésors de l’Ouzbékistan :',
       names: { yan: 'Nourata et les montagnes' },
       notes: {
         sam: 'La splendeur de la Route de la Soie.',

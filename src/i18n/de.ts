@@ -413,7 +413,7 @@ const de: Dictionary = {
         'Samarcande Voyage organisiert authentische, persönliche und erschwingliche Reisen, begleitet von einheimischen Profis, die ihr Land lieben.',
       ],
       quoteLabel: 'Unser Anspruch',
-      quote: 'Dass Sie Usbekistan als Gast entdecken – und nicht als bloßer Tourist.',
+      quote: 'Unser Anspruch: dass Sie Usbekistan als Gast entdecken – und nicht als bloßer Tourist.',
     },
     why: {
       eyebrow: 'Warum wir',

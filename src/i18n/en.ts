@@ -413,7 +413,7 @@ const en: Dictionary = {
         'At Samarcande Voyage, we organise authentic, personalised and affordable trips, accompanied by local professionals who are passionate about their country.',
       ],
       quoteLabel: 'Our ambition',
-      quote: 'To let you discover Uzbekistan as a guest, not just as a tourist.',
+      quote: 'Our ambition: to let you discover Uzbekistan as a guest, not just as a tourist.',
     },
     why: {
       eyebrow: 'Why us',

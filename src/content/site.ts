@@ -11,12 +11,12 @@ export const SITE = {
   /** TODO: adresse réelle */
   email: 'contact@samarcande-voyage.com',
   /** TODO: numéro réel — format international affiché + format lien */
-  phone: '+998 00 000 00 00',
-  phoneHref: '+998000000000',
+  phone: '+998 90 930 10 87',
+  phoneHref: '+998909301087',
   /** TODO: numéro WhatsApp sans « + » ni espaces (vide = bouton masqué) */
-  whatsapp: '998000000000',
+  whatsapp: '998909301087',
   /** TODO: identifiant Telegram sans @ (vide = bouton masqué) */
-  telegram: '',
+  telegram: '+998909301087',
   address: {
     /** TODO: rue et numéro */
     street: '',

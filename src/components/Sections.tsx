@@ -94,7 +94,6 @@ export function IntroBlock({ t, n }: { t: Dictionary; n?: number }) {
         <SectionHead eyebrow={c.eyebrow} n={n} title={c.title} />
         {c.p.map((p, i) => <p key={i} className="intro__p" data-rv="">{p}</p>)}
         <blockquote className="intro__quote" data-rv="">
-          <span>{c.quoteLabel}</span>
           <p>{c.quote}</p>
         </blockquote>
       </div>

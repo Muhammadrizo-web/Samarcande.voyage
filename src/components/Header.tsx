@@ -9,7 +9,7 @@ import { asset } from '@/lib/asset';
 
 export type HeaderLabels = {
   nav: Record<'home' | 'tour' | 'dest' | 'custom' | 'group' | 'exp' | 'agency' | 'contact', string>;
-  book: string; menu: string; close: string; toLight: string; toDark: string; language: string;
+  book: string; quote: string; menu: string; close: string; toLight: string; toDark: string; language: string;
 };
 
 /** Ordre du menu demandé par l'agence. « Voyages en groupe » = départs garantis (page dates). */
@@ -129,6 +129,7 @@ export function Header({ locale, labels }: { locale: Locale; labels: HeaderLabel
             ))}
           </nav>
           <div className="hdr__tools">
+            <Link href={`${href(locale, 'custom')}#demande`} className="btn btn--primary btn--sm hdr__cta">{labels.quote}</Link>
             <div className="lang" ref={langRef}>
               <button type="button" className="lang__btn" aria-expanded={langOpen} aria-haspopup="true" aria-label={`${LOCALE_META[locale].short} — ${labels.language}`}
                 onClick={(e) => { e.stopPropagation(); setLangOpen((v) => !v); }}>
@@ -149,7 +150,6 @@ export function Header({ locale, labels }: { locale: Locale; labels: HeaderLabel
               aria-label={theme === 'dark' ? labels.toLight : labels.toDark} title={theme === 'dark' ? labels.toLight : labels.toDark}>
               <span style={{ display: 'grid' }}><Sun /><Moon /></span>
             </button>
-            <Link href={href(locale, 'dates')} className="btn btn--primary btn--sm hdr__cta">{labels.book}</Link>
             <button type="button" className="icon-btn burger" aria-label={labels.menu} aria-expanded={open} aria-controls="drawer" onClick={() => setOpen(true)}>
               <Burger />
             </button>
@@ -172,7 +172,7 @@ export function Header({ locale, labels }: { locale: Locale; labels: HeaderLabel
           ))}
         </nav>
         <div className="drawer__foot">
-          <Link href={href(locale, 'dates')} className="btn btn--primary btn--block" tabIndex={open ? 0 : -1}>{labels.book} <Arrow /></Link>
+          <Link href={`${href(locale, 'custom')}#demande`} className="btn btn--primary btn--block" tabIndex={open ? 0 : -1}>{labels.quote} <Arrow /></Link>
           <div className="drawer__langs">
             {LOCALES.map((l) => (
               <Link key={l} href={alts[l] ?? href(l, 'home')} hrefLang={l} tabIndex={open ? 0 : -1}
