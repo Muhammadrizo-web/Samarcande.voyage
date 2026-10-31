@@ -57,7 +57,7 @@ export function organizationLd(locale: Locale, t: Dictionary) {
     '@id': abs('/#agency'),
     name: SITE.name,
     url: abs(href(locale, 'home')),
-    logo: abs('/icon-512.png'),
+    logo: abs('/brand/logo.png'),
     image: abs('/og.jpg'),
     description: t.meta.pages.home.desc,
     email: SITE.email,

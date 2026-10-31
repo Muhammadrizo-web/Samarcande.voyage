@@ -27,9 +27,9 @@ const NAV: { key: keyof HeaderLabels['nav']; page: PageKey }[] = [
 export function Brand({ locale }: { locale: Locale }) {
   return (
     <Link href={href(locale, 'home')} className="brand" aria-label="Samarcande Voyage">
-      {/* Logo officiel : version bleue (thème clair) et version ivoire (thème sombre). */}
-      <img className="brand__logo brand__logo--light" src={asset('/brand/logo-wordmark.svg')} alt="" width={1838} height={310} decoding="async" />
-      <img className="brand__logo brand__logo--dark" src={asset('/brand/logo-wordmark-dark.svg')} alt="" width={1838} height={310} decoding="async" />
+      {/* Logo officiel : version turquoise (thème clair) et turquoise clair (thème sombre). */}
+      <img className="brand__logo brand__logo--light" src={asset('/brand/logo.svg')} alt="" width={1972} height={365} decoding="async" />
+      <img className="brand__logo brand__logo--dark" src={asset('/brand/logo-dark.svg')} alt="" width={1972} height={365} decoding="async" />
     </Link>
   );
 }
