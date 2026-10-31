@@ -1,0 +1,44 @@
+{
+  "name": "samarcande-voyage",
+  "version": "2.0.0",
+  "description": "Samarcande Voyage — site de l’agence (Next.js 16, 4 langues)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx serve@latest out -l 3000",
+    "typecheck": "tsc --noEmit",
+    "images": "node scripts/optimize-images.mjs",
+    "map": "node scripts/build-map.mjs",
+    "check:launch": "node scripts/check-launch.mjs",
+    "build:prod": "node scripts/check-launch.mjs && next build"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "next": "^16.3.5",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/d3-geo": "^3.1.1",
+    "@types/node": "^26.6.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/topojson-client": "^3.1.5",
+    "d3-geo": "^3.1.1",
+    "eslint": "^10.11.0",
+    "postcss": "^8.5.28",
+    "sharp": "^0.35.4",
+    "tailwindcss": "^4.3.3",
+    "topojson-client": "^3.1.0",
+    "typescript": "5.9",
+    "world-atlas": "^2.0.2"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=20.9"
+  }
+}
