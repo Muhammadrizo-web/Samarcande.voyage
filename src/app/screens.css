@@ -624,7 +624,6 @@ html.is-paging .snav, html.is-paging .snav * { pointer-events: auto; }
   .nav a { padding: 10px 0; font-size: clamp(12px, 0.92vw, 14px); }
   .nav a::after { left: 0; right: 0; bottom: 3px; height: 2px; }
   .hdr__tools { gap: 4px; }
-  .hdr .theme-btn { display: none; }
   .hdr__cta { padding-inline: clamp(14px, calc(2vw - 8px), 26px); font-size: clamp(12px, 0.92vw, 14px); }
   .lang__btn { padding: 0 8px; }
 }
