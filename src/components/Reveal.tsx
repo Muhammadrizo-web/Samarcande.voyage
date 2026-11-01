@@ -26,7 +26,17 @@ export function Reveal() {
       }
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
     nodes.forEach((n) => io.observe(n));
-    return () => io.disconnect();
+    // Éléments [data-rv] remontés après coup (rechargement à chaud, composant client re-rendu) : on les observe aussi,
+    // sinon ils restent bloqués dans leur état « caché » (ex. photo rognée sur les côtés).
+    const mo = new MutationObserver((muts) => {
+      for (const m of muts) m.addedNodes.forEach((a) => {
+        if (!(a instanceof HTMLElement)) return;
+        const found = a.matches('[data-rv]:not(.is-in)') ? [a] : [];
+        found.concat(Array.from(a.querySelectorAll<HTMLElement>('[data-rv]:not(.is-in)'))).forEach((n) => io.observe(n));
+      });
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
+    return () => { io.disconnect(); mo.disconnect(); };
   }, [pathname]);
   return null;
 }

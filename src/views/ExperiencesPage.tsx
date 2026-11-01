@@ -44,7 +44,7 @@ export function ExperiencesPage({ locale, t }: ViewProps) {
         </div>
       </section>
 
-      <section className="section section--tint">
+      <section className="section section--tint screen" data-screen={e.listEyebrow}>
         <div className="wrap">
           <SectionHead eyebrow={e.listEyebrow} n={1} title={e.listTitle} />
           <div className="exp">

@@ -9,7 +9,7 @@ import type { ViewProps } from './types';
 export function DatesPage({ locale, t, now }: ViewProps) {
   return (
     <>
-      <section className="section section--first">
+      <section className="section section--first screen" data-screen={t.dates.eyebrow}>
         <div className="wrap">
           <Breadcrumb items={[{ name: t.ui.home, href: href(locale, 'home') }, { name: t.nav.group }]} />
           <SectionHead as="h1" eyebrow={t.dates.eyebrow} title={t.dates.title} lead={t.dates.lead} />

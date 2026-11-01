@@ -250,7 +250,7 @@ export function Screens({ label }: { label: string }) {
     };
   }, [pathname]);
 
-  if (items.length < 3) return null;
+  if (items.length < 2) return null;
   const pad = (n: number) => String(n).padStart(2, '0');
 
   return (
