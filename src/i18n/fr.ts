@@ -45,7 +45,7 @@ const fr = {
   },
 
   nav: {
-    home: 'Accueil', tour: 'Nos circuits', dest: 'Nos destinations', custom: 'Voyages sur mesure', group: 'Voyages en groupe',
+    home: 'Accueil', tour: 'Nos circuits', dest: 'Nos destinations', custom: 'Voyages individuels sur mesure', group: 'Voyages en groupe',
     exp: 'Expériences & découvertes', agency: 'À propos de nous', contact: 'Contact', dates: 'Dates & prix', infos: 'Infos pratiques', reviews: 'Témoignages',
   },
 
