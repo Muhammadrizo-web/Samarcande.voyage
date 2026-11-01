@@ -40,7 +40,7 @@ export function CustomPage({ locale, t }: ViewProps) {
       <section className="section section--tint screen" data-screen={c.stepsEyebrow}>
         <div className="wrap">
           <SectionHead eyebrow={c.stepsEyebrow} n={1} title={c.stepsTitle} />
-          <ol className="steps">
+          <ol className="steps steps--how">
             {c.steps.map((s, i) => (
               <li key={i} className="pillar" data-rv="">
                 <span className="pillar__n">{String(i + 1).padStart(2, '0')}</span>

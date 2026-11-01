@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { LOCALES, LOCALE_META, href, routeFromPath, alternates, type Locale, type PageKey } from '@/lib/i18n';
 import { Burger, Chevron, Cross, Globe, Moon, Sun, Arrow } from './Icons';
 import { asset } from '@/lib/asset';
@@ -38,11 +38,20 @@ export function Brand({ locale }: { locale: Locale }) {
   );
 }
 
-function useTheme() {
+function useTheme(pathname: string) {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
-  useEffect(() => {
-    setTheme(document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
-  }, []);
+  // Au changement de langue, React recrée <html> (nouvelle mise en page) et efface data-theme :
+  // on remet le thème choisi avant l'affichage, sinon le site repasse en clair.
+  useLayoutEffect(() => {
+    const root = document.documentElement;
+    let saved: string | null = null;
+    try { saved = localStorage.getItem('sv-theme'); } catch { /* navigation privée */ }
+    const next = saved === 'dark' || saved === 'light'
+      ? saved
+      : root.dataset.theme === 'dark' || (!root.dataset.theme && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    if (root.dataset.theme !== next) root.dataset.theme = next;
+    setTheme(next);
+  }, [pathname]);
   const toggle = (e: React.MouseEvent) => {
     const next = theme === 'dark' ? 'light' : 'dark';
     const apply = () => {
@@ -73,7 +82,7 @@ export function Header({ locale, labels }: { locale: Locale; labels: HeaderLabel
   const [open, setOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
-  const { theme, toggle } = useTheme();
+  const { theme, toggle } = useTheme(pathname);
 
   useEffect(() => {
     let last = window.scrollY;

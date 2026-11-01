@@ -678,6 +678,7 @@ html.is-paging .snav, html.is-paging .snav * { pointer-events: auto; }
 
 /* Voyages sur mesure */
 .steps { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.steps--how { align-items: stretch; margin-bottom: 0; }
 @media (min-width: 720px) { .steps { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1100px) { .steps { grid-template-columns: repeat(4, 1fr); } }
 .steps .pillar:first-child { border-left: 0; padding-left: 0; }
