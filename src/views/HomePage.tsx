@@ -10,7 +10,7 @@ import { Arrow } from '@/components/Icons';
 import type { ViewProps } from './types';
 
 /** « Un voyage, mille découvertes » : ordre du texte de l'agence (Nourata = étape du désert). */
-const DISCOVER: readonly CityKey[] = ['sam', 'buk', 'khi', 'tas', 'yan'];
+const DISCOVER: readonly CityKey[] = ['tas', 'sam', 'shk', 'yan', 'buk', 'khi'];
 
 export function HomePage({ locale, t, now }: ViewProps) {
   const faq = faqFor(t);
@@ -31,7 +31,7 @@ export function HomePage({ locale, t, now }: ViewProps) {
         <div className="wrap">
           <SectionHead split eyebrow={h.discover.eyebrow} n={3} title={h.discover.title} lead={h.discover.lead}
             aside={<Link href={href(locale, 'destinations')} className="link-arrow" style={{ color: 'var(--band-ink)' }}>{t.ui.seeAll} <Arrow /></Link>} />
-          <CityStrip locale={locale} t={t} keys={DISCOVER} band noMeta names={h.discover.names} notes={h.discover.notes} />
+          <CityStrip locale={locale} t={t} keys={DISCOVER} band noMeta notes={h.discover.notes} />
         </div>
       </section>
 
@@ -47,7 +47,7 @@ export function HomePage({ locale, t, now }: ViewProps) {
       </section>
 
       <section className="section screen has-bg has-photo" data-screen={t.nav.group}>
-        <SectionBg name="city-tachkent" pos="50% 50%" />
+        <SectionBg name="city-tachkent" pos="50% 50%" soft />
         <div className="wrap">
           <SectionHead split eyebrow={t.nav.group} n={6} title={t.dates.homeTitle} lead={t.dates.lead}
             aside={<Link href={href(locale, 'dates')} className="link-arrow">{t.ui.seeDates} <Arrow /></Link>} />

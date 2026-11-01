@@ -22,8 +22,8 @@ export function CustomPage({ locale, t }: ViewProps) {
               <Eyebrow>{c.eyebrow}</Eyebrow>
               <h1 className="h1">{c.title}</h1>
               <p className="lead">{c.lead}</p>
-              <ul className="passion__who">
-                {t.home.passion.who.map((w) => <li key={w}>{w}</li>)}
+              <ul className="passion__who passion__who--links">
+                {t.home.passion.who.map((w) => <li key={w}><a href="#demande">{w}</a></li>)}
               </ul>
               <div className="hero__cta">
                 <a href="#demande" className="btn btn--primary">{c.formTitle} <Arrow /></a>

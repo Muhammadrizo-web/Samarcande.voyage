@@ -432,6 +432,7 @@ const en: Dictionary = {
       lead: 'Discover the treasures of Uzbekistan.',
       names: { yan: 'Nurata and the mountains' },
       notes: {
+        shk: 'Tamerlane’s birthplace and the ruins of Ak-Saray.',
         sam: 'The splendour of the Silk Road.',
         buk: 'A museum city with timeless charm.',
         khi: 'A true journey into the Thousand and One Nights.',

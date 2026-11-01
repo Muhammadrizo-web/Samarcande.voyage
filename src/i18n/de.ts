@@ -432,6 +432,7 @@ const de: Dictionary = {
       lead: 'Entdecken Sie die Schätze Usbekistans.',
       names: { yan: 'Nurata und die Berge' },
       notes: {
+        shk: 'Geburtsort Timurs und die Ruinen von Ak-Saray.',
         sam: 'Die Pracht der Seidenstraße.',
         buk: 'Eine Museumsstadt mit zeitlosem Charme.',
         khi: 'Eine echte Reise in Tausendundeine Nacht.',

@@ -14,6 +14,7 @@ import { RouteExplorer } from './client/RouteExplorer';
 import { DayExplorer } from './client/DayExplorer';
 import { HScroll } from './client/HScroll';
 import { FaqList } from './client/FaqList';
+import { PhotoCarousel } from './client/PhotoCarousel';
 import { Arrow, ArrowUpRight, Bed, Calendar, Check, Cross, Info, Pin, Users } from './Icons';
 
 export const CITY_PHOTO: Partial<Record<CityKey, ImageName>> = {
@@ -24,7 +25,7 @@ export const CITY_PHOTO: Partial<Record<CityKey, ImageName>> = {
 
 export function Hero({ locale, t }: { locale: Locale; t: Dictionary }) {
   const h = t.home.hero;
-  const ring = `${t.cities.sam} · ${t.cities.buk} · ${t.cities.khi} · ${t.cities.tas} · `.toUpperCase();
+  const ring = `${t.cities.sam}  ·  ${t.cities.buk}  ·  ${t.cities.khi}  ·  ${t.cities.tas}  ·  `.toUpperCase();
   return (
     <section className="hero screen" data-screen={t.nav.home}>
       <div className="hero__scene" aria-hidden>
@@ -63,8 +64,8 @@ export function Hero({ locale, t }: { locale: Locale; t: Dictionary }) {
           <div className="hero__badge">
             <svg className="badge-ring" viewBox="0 0 100 100" aria-hidden>
               <defs><path id="ring-path" d="M50 50m-41 0a41 41 0 1 1 82 0a41 41 0 1 1-82 0" /></defs>
-              <text fontSize="7.2" fontWeight="700" letterSpacing="1.6" fill="currentColor">
-                <textPath href="#ring-path">{ring}</textPath>
+              <text fontSize="6.2" fontWeight="700" letterSpacing="1" fill="currentColor">
+                <textPath href="#ring-path" textLength="255" lengthAdjust="spacing">{ring}</textPath>
               </text>
             </svg>
             <span>
@@ -117,9 +118,14 @@ export function WhyBlock({ t, n }: { t: Dictionary; n?: number }) {
           ))}
         </ol>
       </div>
-      <figure className="frame trust__img" data-rv="clip">
-        <Picture name="terrain" alt={t.agency.photoCaption} sizes="(min-width: 1100px) 34vw, 92vw" />
-        <figcaption>{t.agency.photoCaption}</figcaption>
+      <figure className="frame trust__img pc" data-rv="clip">
+        <PhotoCarousel prev={t.ui.prev} next={t.ui.next} slides={([
+          ['terrain', t.agency.photoCaption],
+          ...(['g5', 'g9', 'g4', 'g7', 'gk1', 'g1'] as const).map((g) => [g, t.gallery[g]] as const),
+        ] as const).map(([name, cap]) => ({
+          caption: cap,
+          node: <Picture name={name} alt={cap} sizes="(min-width: 1100px) 34vw, 92vw" />,
+        }))} />
       </figure>
     </div>
   );
@@ -276,15 +282,37 @@ export function Included({ locale, t }: { locale: Locale; t: Dictionary }) {
 
 /* ----------------------------------------------------------- programme */
 
+/** Jours regroupés en une seule fiche dans le programme (index 0 = jour 1) : Boukhara, jours 8 à 10. */
+const DAY_GROUPS: [number, number][] = [[7, 9]];
+
 export function DayBlock({ t, n }: { t: Dictionary; n?: number }) {
-  const photos = t.days.map((d, i) => {
+  const photoOf = (i: number, alt: string) => {
     const p = DAY_PHOTOS[i];
-    return p ? <Picture key={i} name={p} alt={d.t} sizes="(min-width: 1100px) 30vw, 92vw" position={DAY_PHOTO_POS[i]} /> : null;
-  });
+    return p ? <Picture key={i} name={p} alt={alt} sizes="(min-width: 1100px) 30vw, 92vw" position={DAY_PHOTO_POS[i]} /> : null;
+  };
+  const items: { t: string; d: string; n: string; m: string; km?: number; from: number; to: number; parts?: { day: number; d: string }[] }[] = [];
+  const photos: React.ReactNode[] = [];
+  for (let i = 0; i < t.days.length; i++) {
+    const g = DAY_GROUPS.find(([a]) => a === i);
+    const d = t.days[i]!;
+    if (g) {
+      const span = t.days.slice(g[0], g[1] + 1);
+      const last = span[span.length - 1]!;
+      items.push({
+        t: last.t, d: span.map((x) => x.d).join(' '), n: [...new Set(span.map((x) => x.n))].join(' · '), m: last.m,
+        from: g[0] + 1, to: g[1] + 1, parts: span.map((x, k) => ({ day: g[0] + k + 1, d: x.d })),
+      });
+      photos.push(photoOf(i, last.t));
+      i = g[1];
+    } else {
+      items.push({ ...d, km: DISTANCES.road[i] || undefined, from: i + 1, to: i + 1 });
+      photos.push(photoOf(i, d.t));
+    }
+  }
   return (
     <DayExplorer
       head={<SectionHead eyebrow={t.prog.eyebrow} n={n} title={t.prog.title} lead={t.prog.lead} />}
-      days={t.days.map((d, i) => ({ ...d, km: DISTANCES.road[i] || undefined }))}
+      days={items}
       photos={photos}
       labels={{ day: t.ui.day, night: t.prog.night, pick: t.ui.dayPick, print: t.ui.print, prev: t.ui.prev, next: t.ui.next }}
     />

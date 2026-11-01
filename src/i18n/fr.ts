@@ -432,6 +432,7 @@ const fr = {
       lead: 'Découvrez les trésors de l’Ouzbékistan :',
       names: { yan: 'Nourata et les montagnes' },
       notes: {
+        shk: 'La ville natale de Tamerlan et les ruines d’Ak-Saraï.',
         sam: 'La splendeur de la Route de la Soie.',
         buk: 'Une ville-musée au charme intemporel.',
         khi: 'Un véritable voyage dans les Mille et Une Nuits.',

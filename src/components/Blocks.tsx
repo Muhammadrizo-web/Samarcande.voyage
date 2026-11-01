@@ -50,12 +50,14 @@ export function SectionHead({ eyebrow, n, title, lead, aside, as = 'h2', split }
  * Photo nette en plein cadre ; voile ivoire en thème clair, voile nuit en thème sombre (globals.css).
  */
 export type Backdrop = 'gk3' | 'g8' | 'city-tachkent' | 'g2' | 'hero';
-export function SectionBg({ name, pos = '50% 50%', side = 'full', kind = 'photo' }: {
+export function SectionBg({ name, pos = '50% 50%', side = 'full', kind = 'photo', soft }: {
   name: Backdrop; pos?: string; side?: 'bottom' | 'top' | 'left' | 'right' | 'full'; kind?: 'photo' | 'band';
+  /** voile clair plus léger : la photo reste plus visible */
+  soft?: boolean;
 }) {
   const set = (ext: string) => `${asset(`/bg/${name}-900.${ext}`)} 900w, ${asset(`/bg/${name}-1600.${ext}`)} 1600w`;
   return (
-    <div className={`sec-bg sec-bg--${kind} sec-bg--${side}`} aria-hidden>
+    <div className={`sec-bg sec-bg--${kind} sec-bg--${side}${soft ? ' sec-bg--soft' : ''}`} aria-hidden>
       <picture>
         <source type="image/avif" srcSet={set('avif')} sizes="100vw" />
         <img src={asset(`/bg/${name}-1600.webp`)} srcSet={set('webp')} sizes="100vw" alt="" loading="lazy" decoding="async" style={{ objectPosition: pos }} />

@@ -31,7 +31,7 @@ const NAV: { key: keyof HeaderLabels['nav']; page: PageKey; hash?: string; curre
 export function Brand({ locale }: { locale: Locale }) {
   return (
     <Link href={href(locale, 'home')} className="brand" aria-label="Samarcande Voyage">
-      {/* Logo officiel : version turquoise (thème clair) et turquoise clair (thème sombre). */}
+      {/* Logo officiel : version or (thème clair) et blanche (thème sombre). */}
       <img className="brand__logo brand__logo--light" src={asset('/brand/logo.svg')} alt="" width={1972} height={365} decoding="async" />
       <img className="brand__logo brand__logo--dark" src={asset('/brand/logo-dark.svg')} alt="" width={1972} height={365} decoding="async" />
     </Link>
@@ -126,7 +126,6 @@ export function Header({ locale, labels }: { locale: Locale; labels: HeaderLabel
         <div className="wrap hdr__in">
           <Brand locale={locale} />
           <div className="hdr__tools">
-            <Link href={`${href(locale, 'custom')}#demande`} className="btn btn--primary btn--sm hdr__cta">{labels.quote}</Link>
             <div className="lang" ref={langRef}>
               <button type="button" className="lang__btn" aria-expanded={langOpen} aria-haspopup="true" aria-label={`${LOCALE_META[locale].short} — ${labels.language}`}
                 onClick={(e) => { e.stopPropagation(); setLangOpen((v) => !v); }}>
@@ -147,6 +146,7 @@ export function Header({ locale, labels }: { locale: Locale; labels: HeaderLabel
               aria-label={theme === 'dark' ? labels.toLight : labels.toDark} title={theme === 'dark' ? labels.toLight : labels.toDark}>
               <span style={{ display: 'grid' }}><Sun /><Moon /></span>
             </button>
+            <Link href={`${href(locale, 'custom')}#demande`} className="btn btn--primary btn--sm hdr__cta">{labels.quote}</Link>
             <button type="button" className="menu-btn" aria-expanded={open} aria-controls="drawer" onClick={() => setOpen(true)}>
               <Burger size={26} strokeWidth={2.2} /> <span>{labels.menu}</span>
             </button>
