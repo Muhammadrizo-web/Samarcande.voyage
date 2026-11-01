@@ -341,31 +341,6 @@
 .lang__menu a span { color: var(--muted); font-size: 12px; letter-spacing: 0.08em; }
 @keyframes pop { from { opacity: 0; transform: scale(0.96) translateY(-4px); } }
 
-.hdr__cta { display: none; }
-@media (min-width: 720px) { .hdr__cta { display: inline-flex; } }
-.burger { display: grid; }
-@media (min-width: 1120px) { .burger { display: none; } }
-
-.drawer {
-  position: fixed; inset: 0; z-index: 60; display: grid; grid-template-rows: auto 1fr auto;
-  background: var(--bg); padding: 0 var(--gutter) 28px;
-  background-image: var(--girih); background-size: 120px;
-  clip-path: circle(0 at calc(100% - 40px) 38px); visibility: hidden;
-  transition: clip-path 0.7s var(--e-out), visibility 0s 0.7s;
-}
-.drawer.is-open { clip-path: circle(150% at calc(100% - 40px) 38px); visibility: visible; transition: clip-path 0.8s var(--e-out); }
-.drawer__top { height: var(--hdr-h); display: flex; align-items: center; justify-content: space-between; }
-.drawer nav { display: grid; align-content: center; gap: 2px; }
-.drawer nav a {
-  font-family: var(--f-display); font-size: clamp(34px, 9vw, 52px); line-height: 1.12; font-weight: 500;
-  opacity: 0; transform: translateY(18px); transition: opacity 0.5s var(--e-out), transform 0.6s var(--e-out);
-}
-.drawer.is-open nav a { opacity: 1; transform: none; }
-.drawer nav a[aria-current='page'] { color: var(--gold-ink); }
-.drawer__foot { display: grid; gap: 18px; }
-.drawer__langs { display: flex; gap: 6px; flex-wrap: wrap; }
-.drawer__langs a { padding: 8px 14px; border: 1px solid var(--line-2); border-radius: 999px; font-size: 13px; font-weight: 700; }
-.drawer__langs a[aria-current='true'] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 
 /* ------------------------------------------------------------------- héros */
 
@@ -959,66 +934,4 @@
 @media (max-width: 899px) {
   .sec-bg--photo::after { background: linear-gradient(180deg, rgb(243 240 233 / .82) 0%, rgb(243 240 233 / .6) 40%, rgb(243 240 233 / .78) 100%); }
   .sec-bg--band::after { background: rgb(243 240 233 / .78); }
-}
-
-/* ==========================================================================
-   Téléphone et tablette : menu toujours visible (plus de tiroir animé)
-   ========================================================================== */
-
-@media (max-width: 1119px) {
-  :root { --hdr-h: 100px; }
-  .hdr {
-    height: auto;
-    background: color-mix(in srgb, var(--bg) 93%, transparent);
-    -webkit-backdrop-filter: saturate(1.4) blur(14px);
-    backdrop-filter: saturate(1.4) blur(14px);
-    box-shadow: 0 1px 0 var(--line);
-    transition: none;
-  }
-  .hdr.is-stuck { --hdr-h: 100px; }
-  .hdr.is-hidden { transform: none; }
-  /* Ligne 1 : marque + langue + thème. Ligne 2 : menu (défilement latéral) + bouton « Réserver ». */
-  .hdr__in {
-    height: auto; display: grid; align-items: center; gap: 2px 8px;
-    grid-template-columns: minmax(0, 1fr) auto auto;
-    grid-template-areas: 'brand lang theme' 'nav nav cta';
-    padding-top: 8px;
-  }
-  /* sans min-width: 0, le menu défilant élargit la colonne et pousse le reste */
-  .hdr__in > * { min-width: 0; }
-  .brand { grid-area: brand; }
-  .hdr__tools { display: contents; }
-  .hdr .lang { grid-area: lang; justify-self: end; }
-  .hdr .theme-btn { grid-area: theme; justify-self: end; }
-  .hdr__cta { grid-area: cta; justify-self: end; align-self: start; }
-  .nav {
-    grid-area: nav; display: flex; align-items: center; width: 100%;
-    margin-left: calc(var(--gutter) * -1);
-    padding: 0 10px 10px var(--gutter); gap: 20px;
-    overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none;
-    /* le dégradé à droite montre qu'il reste des rubriques à faire défiler */
-    mask-image: linear-gradient(90deg, #000 86%, transparent);
-  }
-  .nav::-webkit-scrollbar { display: none; }
-  .nav a { white-space: nowrap; font-size: 13.5px; padding-block: 6px; }
-  .hdr__cta { display: inline-flex; }
-  .burger, .drawer { display: none !important; }
-}
-
-@media (max-width: 560px) {
-  :root { --hdr-h: 96px; }
-  .hdr.is-stuck { --hdr-h: 96px; }
-  /* Téléphone : « Réserver » monte sur la 1re ligne, le menu prend toute la largeur. */
-  .hdr__in { gap: 2px 8px; grid-template-areas: 'brand lang cta' 'nav nav nav'; }
-  /* Sur téléphone le thème suit le réglage du système : le bouton laisse la place au menu. */
-  .hdr .theme-btn { display: none; }
-  .hdr .lang { display: block; }
-  /* globe seul : le libellé de langue est déjà dans aria-label */
-  .lang__btn { height: 38px; padding: 0 9px; gap: 0; font-size: 0; }
-  .lang__btn svg:last-of-type { display: none; }
-  .icon-btn.theme-btn { width: 38px; height: 38px; }
-  .hdr__cta { --bh: 38px; padding: 0 14px; font-size: 12.5px; align-self: center; }
-  .brand, .hdr.is-stuck .brand { --logo-h: 28px; }
-  .nav { gap: 16px; }
-  .nav a { font-size: 13px; }
 }

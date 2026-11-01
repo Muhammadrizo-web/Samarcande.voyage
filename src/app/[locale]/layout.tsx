@@ -61,7 +61,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         <Header
           locale={locale}
           labels={{
-            nav: { home: t.nav.home, tour: t.nav.tour, dest: t.nav.dest, custom: t.nav.custom, group: t.nav.group, exp: t.nav.exp, agency: t.nav.agency, contact: t.nav.contact },
+            nav: { home: t.nav.home, tour: t.nav.tour, dest: t.nav.dest, custom: t.nav.custom, group: t.nav.group, reviews: t.nav.reviews, quote: t.ui.quote, contact: t.nav.contact },
             book: t.ui.book, quote: t.ui.quote, menu: t.ui.menu, close: t.ui.close,
             toLight: t.ui.themeToLight, toDark: t.ui.themeToDark, language: t.ui.language,
           }}

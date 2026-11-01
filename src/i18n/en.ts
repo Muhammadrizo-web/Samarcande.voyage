@@ -45,8 +45,8 @@ const en: Dictionary = {
   },
 
   nav: {
-    home: 'Home', tour: 'Our tours', dest: 'Destinations', custom: 'Tailor-made trips', group: 'Group tours',
-    exp: 'Experiences & discoveries', agency: 'About us', contact: 'Contact', dates: 'Dates & prices', infos: 'Practical info',
+    home: 'Home', tour: 'Our tours', dest: 'Our destinations', custom: 'Tailor-made trips', group: 'Group tours',
+    exp: 'Experiences & discoveries', agency: 'About us', contact: 'Contact', dates: 'Dates & prices', infos: 'Practical info', reviews: 'Testimonials',
   },
 
   ui: {

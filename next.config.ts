@@ -13,6 +13,8 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || undefined,
   experimental: { globalNotFound: true },
+  // dev : autorise l'ouverture du site depuis le téléphone (réseau local), sinon le JS — et le menu — ne marchent pas
+  allowedDevOrigins: ['192.168.1.13', '192.168.1.*', '192.168.0.*'],
 };
 
 export default nextConfig;

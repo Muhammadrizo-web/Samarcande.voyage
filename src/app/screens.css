@@ -611,34 +611,6 @@ html.is-paging .snav, html.is-paging .snav * { pointer-events: auto; }
 [data-theme='dark'] .dep__radio::after { background: var(--gold); }
 
 /* ==========================================================================
-   En-tête ordinateur sur une seule ligne (maquette agence) :
-   logo · 8 rubriques · « Demande de devis » · langue.
-   ========================================================================== */
-
-@media (min-width: 1120px) {
-  .hdr > .wrap { max-width: 1520px; padding-inline: clamp(24px, 2.6vw, 48px); }
-  .hdr__in { gap: clamp(12px, calc(3vw - 22px), 32px); }
-  .hdr .brand { --logo-h: clamp(24px, calc(2.6vw - 4px), 38px); }
-  .hdr.is-stuck .brand { --logo-h: clamp(24px, 2.1vw, 32px); }
-  .nav { gap: clamp(8px, calc(2.6vw - 20px), 28px); margin-inline: auto; }
-  .nav a { padding: 10px 0; font-size: clamp(12px, 0.92vw, 14px); }
-  .nav a::after { left: 0; right: 0; bottom: 3px; height: 2px; }
-  .hdr__tools { gap: 4px; }
-  .hdr__cta { padding-inline: clamp(14px, calc(2vw - 8px), 26px); font-size: clamp(12px, 0.92vw, 14px); }
-  .lang__btn { padding: 0 8px; }
-}
-/* écrans 1120–1279 px : la langue se réduit au globe (libellé dans aria-label) */
-@media (min-width: 1120px) and (max-width: 1279px) {
-  .lang__btn { font-size: 0; gap: 0; padding: 0 10px; }
-  .lang__btn svg:last-of-type { display: none; }
-  .nav a { font-size: 12px; }
-  .nav { gap: 8px; }
-  .hdr__in { gap: 10px; }
-  .hdr .brand, .hdr.is-stuck .brand { --logo-h: 20px; }
-  .hdr__cta { padding-inline: 12px; font-size: 12px; }
-}
-
-/* ==========================================================================
    Accueil v3 : héros « Samarcande Voyage », Bienvenue, Pourquoi nous, Passion
    ========================================================================== */
 
@@ -718,3 +690,99 @@ html.is-paging .snav, html.is-paging .snav * { pointer-events: auto; }
 .exp__item .h3 { font-size: clamp(22px, 1.8vw, 26px); }
 .exp__item p { font-size: 15px; }
 .exp__go { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 800; color: var(--ink); }
+
+/* ==========================================================================
+   En-tête + menu « hamburger » (toutes tailles d'écran)
+   Une seule ligne : logo · « Demande de devis » · langue · thème · [☰ Menu].
+   Le menu s'ouvre en panneau latéral, gros caractères lisibles par tous
+   (personnes âgées comprises) sans être démesurés.
+   ========================================================================== */
+
+.hdr__in { gap: 12px; }
+.hdr__tools { margin-left: auto; gap: 6px; }
+.hdr__cta { display: none; }
+@media (min-width: 760px) { .hdr__cta { display: inline-flex; --bh: 46px; padding-inline: 22px; font-size: 16px; } }
+
+.lang__btn { font-size: 15px; height: 46px; }
+
+/* bouton Menu : icône + mot « Menu », grande zone de clic */
+.menu-btn {
+  display: inline-flex; align-items: center; gap: 10px; height: 50px; padding: 0 20px 0 16px;
+  border-radius: 999px; background: var(--btn); color: var(--btn-ink);
+  font-size: 18px; font-weight: 700; letter-spacing: 0.01em; line-height: 1;
+  transition: transform 0.25s var(--e-out), box-shadow 0.25s, background-color 0.2s;
+}
+.menu-btn:hover { box-shadow: var(--shadow-l); transform: translateY(-1px); }
+.menu-btn:active { transform: scale(0.97); }
+.menu-btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.menu-btn--close { background: var(--bg-3); color: var(--ink); }
+
+/* panneau */
+.drawer { position: fixed; inset: 0; z-index: 60; visibility: hidden; pointer-events: none; transition: visibility 0s 0.45s; }
+.drawer.is-open { visibility: visible; pointer-events: auto; transition: none; }
+.drawer__scrim {
+  position: absolute; inset: 0; background: rgb(10 14 18 / 0.45);
+  opacity: 0; transition: opacity 0.35s var(--e-std);
+}
+.drawer.is-open .drawer__scrim { opacity: 1; }
+.drawer__panel {
+  position: absolute; inset: 0 0 0 auto; width: min(100%, 520px);
+  display: grid; grid-template-rows: auto 1fr auto; gap: 8px;
+  background: var(--bg); background-image: var(--girih); background-size: 120px;
+  padding: 0 clamp(18px, 4vw, 36px) 24px; overflow-y: auto; overscroll-behavior: contain;
+  box-shadow: -20px 0 60px rgb(0 0 0 / 0.18);
+  transform: translateX(100%); transition: transform 0.45s var(--e-out);
+}
+.drawer.is-open .drawer__panel { transform: none; }
+.drawer__top { min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--line); }
+.drawer__title { font-size: 15px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+.drawer nav { padding-block: 8px; }
+.drawer nav ol { list-style: none; margin: 0; padding: 0; display: grid; }
+.drawer nav li {
+  border-bottom: 1px solid var(--line);
+  opacity: 0; transform: translateX(16px); transition: opacity 0.4s var(--e-out), transform 0.45s var(--e-out);
+}
+.drawer.is-open nav li { opacity: 1; transform: none; }
+.drawer nav a {
+  display: flex; align-items: center; gap: 16px; min-height: 64px; padding: 10px 6px;
+  font-family: var(--f-body); font-size: clamp(21px, 1.2vw + 14px, 25px); font-weight: 650; line-height: 1.25;
+  color: var(--ink); border-radius: 12px; transition: background-color 0.2s, color 0.2s;
+}
+.drawer nav a:hover { background: var(--bg-2); }
+.drawer nav a:focus-visible { outline: 3px solid var(--gold); outline-offset: -3px; }
+.drawer__n {
+  flex: none; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%;
+  border: 1.5px solid var(--line-2); font-size: 15px; font-weight: 800; color: var(--muted);
+}
+.drawer__l { flex: 1; }
+.drawer nav a > svg { flex: none; color: var(--gold-ink); opacity: 0.55; transition: transform 0.3s var(--e-out), opacity 0.2s; }
+.drawer nav a:hover > svg { transform: translateX(4px); opacity: 1; }
+.drawer nav a[aria-current='page'] { color: var(--gold-ink); }
+.drawer nav a[aria-current='page'] .drawer__n { background: var(--gold); border-color: var(--gold); color: #fff; }
+.drawer nav a.is-quote .drawer__l { color: var(--gold-ink); }
+
+.drawer__foot { padding-top: 12px; }
+.drawer__langs { display: flex; gap: 8px; flex-wrap: wrap; }
+.drawer__langs a { padding: 10px 16px; border: 1px solid var(--line-2); border-radius: 999px; font-size: 16px; font-weight: 700; }
+.drawer__langs a[aria-current='true'] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+/* téléphone */
+@media (max-width: 560px) {
+  .hdr .lang { display: block; }
+  .hdr .theme-btn { display: none; }
+  .lang__btn { height: 44px; padding: 0 10px; gap: 0; font-size: 0; }
+  .lang__btn svg { width: 22px; height: 22px; }
+  .lang__btn svg:last-of-type { display: none; }
+  .brand, .hdr.is-stuck .brand { --logo-h: 28px; }
+  .menu-btn { height: 46px; padding: 0 16px 0 13px; font-size: 17px; gap: 8px; }
+  .drawer__top { min-height: 72px; }
+  .drawer nav a { min-height: 58px; gap: 12px; }
+  .drawer__n { width: 30px; height: 30px; font-size: 14px; }
+}
+@media (max-width: 360px) { .menu-btn span { display: none; } .menu-btn { padding: 0 12px; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer__panel, .drawer nav li, .drawer__scrim { transition: none !important; }
+}
+@media print { .menu-btn { display: none !important; } }

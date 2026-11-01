@@ -45,8 +45,8 @@ const de: Dictionary = {
   },
 
   nav: {
-    home: 'Startseite', tour: 'Unsere Reisen', dest: 'Reiseziele', custom: 'Individualreisen', group: 'Gruppenreisen',
-    exp: 'Erlebnisse & Entdeckungen', agency: 'Über uns', contact: 'Kontakt', dates: 'Termine & Preise', infos: 'Reiseinfos',
+    home: 'Startseite', tour: 'Unsere Reisen', dest: 'Unsere Reiseziele', custom: 'Individualreisen', group: 'Gruppenreisen',
+    exp: 'Erlebnisse & Entdeckungen', agency: 'Über uns', contact: 'Kontakt', dates: 'Termine & Preise', infos: 'Reiseinfos', reviews: 'Erfahrungsberichte',
   },
 
   ui: {

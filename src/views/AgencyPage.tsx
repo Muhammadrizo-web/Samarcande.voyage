@@ -44,7 +44,7 @@ export function AgencyPage({ locale, t }: ViewProps) {
           <div className="facts" data-rv="">
             {facts.map((f) => <div key={f.t}><b>{f.t}</b><p>{f.d}</p></div>)}
           </div>
-          <div className="callout" style={{ marginTop: 28 }} data-rv=""><Info /><span>{t.agency.honest}</span></div>
+          <div className="callout" id="avis" style={{ marginTop: 28 }} data-rv=""><Info /><span>{t.agency.honest}</span></div>
         </div>
       </section>
 

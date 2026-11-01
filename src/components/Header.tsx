@@ -8,20 +8,24 @@ import { Burger, Chevron, Cross, Globe, Moon, Sun, Arrow } from './Icons';
 import { asset } from '@/lib/asset';
 
 export type HeaderLabels = {
-  nav: Record<'home' | 'tour' | 'dest' | 'custom' | 'group' | 'exp' | 'agency' | 'contact', string>;
+  nav: Record<'home' | 'tour' | 'custom' | 'group' | 'dest' | 'reviews' | 'quote' | 'contact', string>;
   book: string; quote: string; menu: string; close: string; toLight: string; toDark: string; language: string;
 };
 
-/** Ordre du menu demandé par l'agence. « Voyages en groupe » = départs garantis (page dates). */
-const NAV: { key: keyof HeaderLabels['nav']; page: PageKey }[] = [
-  { key: 'home', page: 'home' },
-  { key: 'tour', page: 'tour' },
-  { key: 'dest', page: 'destinations' },
-  { key: 'custom', page: 'custom' },
-  { key: 'group', page: 'dates' },
-  { key: 'exp', page: 'experiences' },
-  { key: 'agency', page: 'agency' },
-  { key: 'contact', page: 'contact' },
+/**
+ * Menu (ordre demandé par l'agence). Tout passe par le bouton « Menu » (hamburger),
+ * sur ordinateur comme sur téléphone : gros caractères, lisibles par tous.
+ * « Voyages en groupe » = départs garantis (page dates) ; « Témoignages » = encart avis (page agence).
+ */
+const NAV: { key: keyof HeaderLabels['nav']; page: PageKey; hash?: string; current?: boolean }[] = [
+  { key: 'home', page: 'home', current: true },
+  { key: 'tour', page: 'tour', current: true },
+  { key: 'custom', page: 'custom', current: true },
+  { key: 'group', page: 'dates', current: true },
+  { key: 'dest', page: 'destinations', current: true },
+  { key: 'reviews', page: 'agency', hash: '#avis' },
+  { key: 'quote', page: 'custom', hash: '#demande' },
+  { key: 'contact', page: 'contact', current: true },
 ];
 
 export function Brand({ locale }: { locale: Locale }) {
@@ -121,13 +125,6 @@ export function Header({ locale, labels }: { locale: Locale; labels: HeaderLabel
       <header className={`hdr${stuck || !isHome ? ' is-stuck' : ''}${hidden && !open ? ' is-hidden' : ''}`}>
         <div className="wrap hdr__in">
           <Brand locale={locale} />
-          <nav className="nav" aria-label="Navigation">
-            {NAV.map((n) => (
-              <Link key={n.key} href={href(locale, n.page)} aria-current={isCurrent(n.page) ? 'page' : undefined}>
-                {labels.nav[n.key]}
-              </Link>
-            ))}
-          </nav>
           <div className="hdr__tools">
             <Link href={`${href(locale, 'custom')}#demande`} className="btn btn--primary btn--sm hdr__cta">{labels.quote}</Link>
             <div className="lang" ref={langRef}>
@@ -150,36 +147,47 @@ export function Header({ locale, labels }: { locale: Locale; labels: HeaderLabel
               aria-label={theme === 'dark' ? labels.toLight : labels.toDark} title={theme === 'dark' ? labels.toLight : labels.toDark}>
               <span style={{ display: 'grid' }}><Sun /><Moon /></span>
             </button>
-            <button type="button" className="icon-btn burger" aria-label={labels.menu} aria-expanded={open} aria-controls="drawer" onClick={() => setOpen(true)}>
-              <Burger />
+            <button type="button" className="menu-btn" aria-expanded={open} aria-controls="drawer" onClick={() => setOpen(true)}>
+              <Burger size={26} strokeWidth={2.2} /> <span>{labels.menu}</span>
             </button>
           </div>
         </div>
       </header>
 
-      <div id="drawer" className={`drawer${open ? ' is-open' : ''}`} role="dialog" aria-modal="true" aria-label={labels.menu} aria-hidden={!open}>
-        <div className="drawer__top">
-          <Brand locale={locale} />
-          <button type="button" className="icon-btn" aria-label={labels.close} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}><Cross size={22} /></button>
-        </div>
-        <nav aria-label="Navigation">
-          {NAV.map((n, i) => (
-            <Link key={n.key} href={href(locale, n.page)} tabIndex={open ? 0 : -1}
-              aria-current={isCurrent(n.page) ? 'page' : undefined}
-              style={{ transitionDelay: open ? `${120 + i * 45}ms` : '0ms' }}>
-              {labels.nav[n.key]}
-            </Link>
-          ))}
-        </nav>
-        <div className="drawer__foot">
-          <Link href={`${href(locale, 'custom')}#demande`} className="btn btn--primary btn--block" tabIndex={open ? 0 : -1}>{labels.quote} <Arrow /></Link>
-          <div className="drawer__langs">
-            {LOCALES.map((l) => (
-              <Link key={l} href={alts[l] ?? href(l, 'home')} hrefLang={l} tabIndex={open ? 0 : -1}
-                aria-current={l === locale ? 'true' : undefined} onClick={() => setLangPref(l)}>
-                {LOCALE_META[l].label}
-              </Link>
-            ))}
+      <div id="drawer" className={`drawer${open ? ' is-open' : ''}`} aria-hidden={!open}>
+        <div className="drawer__scrim" onClick={() => setOpen(false)} />
+        <div className="drawer__panel" role="dialog" aria-modal="true" aria-label={labels.menu}>
+          <div className="drawer__top">
+            <span className="drawer__title">{labels.menu}</span>
+            <button type="button" className="menu-btn menu-btn--close" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>
+              <Cross size={24} /> <span>{labels.close}</span>
+            </button>
+          </div>
+          <nav aria-label="Navigation">
+            <ol>
+              {NAV.map((n, i) => (
+                <li key={n.key} style={{ transitionDelay: open ? `${80 + i * 35}ms` : '0ms' }}>
+                  <Link href={`${href(locale, n.page)}${n.hash ?? ''}`} tabIndex={open ? 0 : -1}
+                    className={n.key === 'quote' ? 'is-quote' : undefined}
+                    aria-current={n.current && isCurrent(n.page) ? 'page' : undefined}
+                    onClick={() => setOpen(false)}>
+                    <span className="drawer__n">{i + 1}</span>
+                    <span className="drawer__l">{labels.nav[n.key]}</span>
+                    <Arrow size={22} />
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </nav>
+          <div className="drawer__foot">
+            <div className="drawer__langs">
+              {LOCALES.map((l) => (
+                <Link key={l} href={alts[l] ?? href(l, 'home')} hrefLang={l} tabIndex={open ? 0 : -1}
+                  aria-current={l === locale ? 'true' : undefined} onClick={() => setLangPref(l)}>
+                  {LOCALE_META[l].label}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>
