@@ -914,16 +914,22 @@
   background: linear-gradient(90deg, rgb(243 240 233 / .9) 0%, rgb(243 240 233 / .76) 45%, rgb(243 240 233 / .3) 80%, rgb(243 240 233 / .12) 100%);
 }
 
-/* « Ближайшие выезды » : voile clair plus léger, photo plus présente */
-:root:not([data-theme='dark']) .sec-bg--soft img { filter: saturate(1.06) contrast(1.03) brightness(0.9); }
+/* « Ближайшие выезды » : photo assombrie (voile nuit), titres clairs bien lisibles ; le formulaire reste clair */
+:root:not([data-theme='dark']) .sec-bg--soft img { filter: saturate(0.92) contrast(1.04) brightness(0.72); }
 :root:not([data-theme='dark']) .sec-bg--soft::after {
   background:
-    linear-gradient(90deg, rgb(243 240 233 / .24) 0%, rgb(243 240 233 / .08) 45%, rgb(243 240 233 / 0) 75%),
-    linear-gradient(180deg, rgb(243 240 233 / .32) 0%, rgb(243 240 233 / .3) 22%, rgb(243 240 233 / .3) 78%, rgb(243 240 233 / .4) 100%);
+    linear-gradient(180deg, rgb(8 16 24 / .62) 0%, rgb(8 16 24 / .36) 40%, rgb(8 16 24 / .42) 70%, rgb(8 16 24 / .66) 100%),
+    linear-gradient(90deg, rgb(8 16 24 / .5) 0%, rgb(8 16 24 / .16) 65%, rgb(8 16 24 / 0) 100%);
 }
 @media (max-width: 899px) {
-  :root:not([data-theme='dark']) .sec-bg--soft::after { background: linear-gradient(180deg, rgb(243 240 233 / .6) 0%, rgb(243 240 233 / .4) 40%, rgb(243 240 233 / .55) 100%); }
+  :root:not([data-theme='dark']) .sec-bg--soft::after { background: linear-gradient(180deg, rgb(8 16 24 / .66) 0%, rgb(8 16 24 / .5) 40%, rgb(8 16 24 / .66) 100%); }
 }
+:root:not([data-theme='dark']) .has-photo:has(> .sec-bg--soft) > .wrap > .sec-head :is(h2, .lead, .link-arrow) {
+  color: #f6f1e6; text-shadow: 0 1px 14px rgb(0 0 0 / .35);
+}
+:root:not([data-theme='dark']) .has-photo:has(> .sec-bg--soft) > .wrap > .sec-head .lead { color: #e6e0d3; }
+:root:not([data-theme='dark']) .has-photo:has(> .sec-bg--soft) > .wrap > .sec-head .eyebrow { color: #e2c27e; text-shadow: none; }
+:root:not([data-theme='dark']) .has-photo:has(> .sec-bg--soft) { --surface: rgb(255 253 248 / 0.96); --surface-2: rgb(255 253 248 / 0.98); }
 
 /* sombre */
 [data-theme='dark'] .has-photo {
