@@ -480,6 +480,9 @@ const de: Dictionary = {
     formEyebrow: 'Ihre Anfrage',
     formTitle: 'Ihr persönliches Programm anfragen',
     formLead: 'Nennen Sie uns Ihre Termine, die Zahl der Reisenden und Ihre Wünsche. Wir antworten innerhalb eines Werktags.',
+    calcBase: 'Basisreise 12 Tage / 10 Nächte',
+    calcNote: 'Richtpreis zum Tarif der Basisreise. Die genaue Berechnung für Ihre Termine und Wünsche senden wir nach Ihrer Anfrage.',
+    calcDates: 'Wunschtermine und Wünsche: ',
   },
 
   exp: {

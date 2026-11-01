@@ -480,6 +480,9 @@ const en: Dictionary = {
     formEyebrow: 'Your request',
     formTitle: 'Request your personalised itinerary',
     formLead: 'Tell us your dates, the number of travellers and your wishes. We reply within one working day.',
+    calcBase: 'Base tour 12 days / 10 nights',
+    calcNote: 'Indicative price at the base tour rate. We send the exact quote for your dates and wishes after your request.',
+    calcDates: 'Preferred dates and wishes: ',
   },
 
   exp: {

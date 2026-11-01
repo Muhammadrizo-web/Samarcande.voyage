@@ -810,3 +810,18 @@ html.is-paging .snav, html.is-paging .snav * { pointer-events: auto; }
 .pc__btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .pc__btn--prev svg { transform: rotate(180deg); }
 .pc__count { font-size: 12px; font-weight: 700; min-width: 34px; text-align: center; font-variant-numeric: tabular-nums; }
+
+/* « Запросить расчёт » : calculateur compact en largeur (tient dans un écran), formulaire + contacts dessous */
+.quote { display: grid; gap: 28px; }
+.quote-calc { position: static; gap: 18px; padding: clamp(20px, 2vw, 28px); }
+.quote-calc__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; }
+.quote-calc__head .calc__for { margin: 0; }
+.quote-calc__note { flex-basis: 100%; display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: var(--muted); }
+.quote-calc__note svg { flex: none; margin-top: 2px; color: var(--gold-ink); }
+.quote-calc__grid { display: grid; gap: 18px 28px; }
+.quote-calc__col { display: grid; gap: 14px; align-content: start; min-width: 0; }
+.quote-calc__sum { gap: 14px; }
+.quote-calc .bill { margin: 0; }
+@media (min-width: 760px) { .quote-calc__grid { grid-template-columns: 1fr 1fr; } .quote-calc__sum { grid-column: 1 / -1; } }
+@media (min-width: 1180px) { .quote-calc__grid { grid-template-columns: 1.05fr 1fr 0.95fr; } .quote-calc__sum { grid-column: auto; } }
+.quote .planner { align-items: start; }

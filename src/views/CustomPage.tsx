@@ -4,6 +4,7 @@ import { href } from '@/lib/i18n';
 import { breadcrumbLd } from '@/lib/seo';
 import { Breadcrumb, Eyebrow, SectionHead } from '@/components/Blocks';
 import { ContactForm } from '@/components/client/ContactForm';
+import { QuoteCalc } from '@/components/client/QuoteRequest';
 import { JsonLd } from '@/components/JsonLd';
 import { Picture } from '@/components/Picture';
 import { Arrow, Info, Mail, Phone, Telegram, WhatsApp } from '@/components/Icons';
@@ -69,14 +70,21 @@ export function CustomPage({ locale, t }: ViewProps) {
         </div>
       </section>
 
-      <section className="section section--tint" id="demande">
+      <section className="section screen" id="calcul" data-screen={t.dates.calcTitle}>
         <div className="wrap">
-          <SectionHead eyebrow={c.formEyebrow} n={3} title={c.formTitle} lead={c.formLead} />
+          <SectionHead eyebrow={t.dates.calcTitle} n={3} title={t.ui.quote} />
+          <QuoteCalc locale={locale} t={t} />
+        </div>
+      </section>
+
+      <section className="section section--tint screen" id="demande" data-screen={c.formEyebrow}>
+        <div className="wrap">
+          <SectionHead eyebrow={c.formEyebrow} n={4} title={c.formTitle} lead={c.formLead} />
           <div className="planner">
             <div className="panel" data-rv="">
               <ContactForm locale={locale} c={t.contact} f={t.form} b={t.book} subject={t.contact.subjects[1]} />
             </div>
-            <aside className="grid gap-4 content-start" data-rv="">
+            <div className="grid gap-4 content-start" data-rv="">
               <div className="flex flex-wrap gap-3">
                 {SITE.whatsapp && (
                   <a className="btn btn--line" href={`https://wa.me/${SITE.whatsapp}`} target="_blank" rel="noopener"><WhatsApp size={19} /> WhatsApp</a>
@@ -90,7 +98,7 @@ export function CustomPage({ locale, t }: ViewProps) {
                 <div><b>{t.contact.phoneT}</b><p><a className="link-arrow" href={`tel:${SITE.phoneHref}`}><Phone /> {SITE.phone}</a></p></div>
                 <div><b>{t.contact.langT}</b><p>{t.contact.langD}</p></div>
               </div>
-            </aside>
+            </div>
           </div>
         </div>
       </section>

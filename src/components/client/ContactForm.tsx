@@ -1,20 +1,34 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Dictionary } from '@/i18n/fr';
 import type { Locale } from '@/lib/i18n';
 import { isEmail, sendLead } from '@/lib/lead';
 import { Arrow, Check } from '../Icons';
 import { DemoNote, FormError, SubmitLabel, type Status } from './FormStatus';
 
-export function ContactForm({ locale, c, f, b, subject, placeholder }: {
+export function ContactForm({ locale, c, f, b, subject, placeholder, prefill }: {
   locale: Locale; c: Dictionary['contact']; f: Dictionary['form']; b: Dictionary['book']; subject?: string; placeholder?: string;
+  /** texte recopié dans le message (ex. détail du calculateur) ; `n` change à chaque envoi */
+  prefill?: { text: string; n: number };
 }) {
   const [v, setV] = useState({ name: '', email: '', subject: subject ?? c.subjects[0] ?? '', message: '' });
   const [hp, setHp] = useState('');
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<Status>('idle');
   const set = (k: keyof typeof v, val: string) => setV((x) => ({ ...x, [k]: val }));
+  useEffect(() => {
+    if (prefill) { setV((x) => ({ ...x, message: prefill.text })); setErrors((e) => ({ ...e, message: '' })); }
+  }, [prefill]);
+  // détail envoyé par le calculateur « Votre prix » (autre section de la page)
+  useEffect(() => {
+    const on = (e: Event) => {
+      const text = (e as CustomEvent<string>).detail;
+      if (typeof text === 'string') { setV((x) => ({ ...x, message: text })); setErrors((er) => ({ ...er, message: '' })); }
+    };
+    window.addEventListener('sv:prefill', on);
+    return () => window.removeEventListener('sv:prefill', on);
+  }, []);
   const summary = `${c.subject}: ${v.subject}\n${f.name}: ${v.name}\n${b.email}: ${v.email}\n\n${v.message}`;
 
   const submit = async (e: React.FormEvent) => {

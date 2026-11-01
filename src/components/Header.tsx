@@ -146,7 +146,7 @@ export function Header({ locale, labels }: { locale: Locale; labels: HeaderLabel
               aria-label={theme === 'dark' ? labels.toLight : labels.toDark} title={theme === 'dark' ? labels.toLight : labels.toDark}>
               <span style={{ display: 'grid' }}><Sun /><Moon /></span>
             </button>
-            <Link href={`${href(locale, 'custom')}#demande`} className="btn btn--primary btn--sm hdr__cta">{labels.quote}</Link>
+            <Link href={`${href(locale, 'custom')}#calcul`} className="btn btn--primary btn--sm hdr__cta">{labels.quote}</Link>
             <button type="button" className="menu-btn" aria-expanded={open} aria-controls="drawer" onClick={() => setOpen(true)}>
               <Burger size={26} strokeWidth={2.2} /> <span>{labels.menu}</span>
             </button>

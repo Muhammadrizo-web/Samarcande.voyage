@@ -480,6 +480,9 @@ const fr = {
     formEyebrow: 'Votre demande',
     formTitle: 'Demandez votre programme personnalisé',
     formLead: 'Dites-nous vos dates, le nombre de voyageurs et vos envies. Nous vous répondons en français dans la journée ouvrée.',
+    calcBase: 'Circuit de base 12 jours / 10 nuits',
+    calcNote: 'Prix indicatif au tarif du circuit de base. Le calcul exact selon vos dates et vos envies vous est envoyé après la demande.',
+    calcDates: 'Dates souhaitées et envies : ',
   },
 
   exp: {
