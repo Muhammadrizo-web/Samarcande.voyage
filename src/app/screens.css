@@ -38,7 +38,7 @@
 
 .trust { display: grid; gap: clamp(32px, 4vw, 64px); align-items: center; }
 .trust__img { position: relative; aspect-ratio: 16 / 10; }
-.trust__img figcaption {
+.trust__img figcaption, .city-hero__img.pc figcaption {
   position: absolute; left: 14px; bottom: 14px; padding: 6px 12px; border-radius: 999px;
   background: rgb(8 16 24 / 0.55); color: #f3eee2; font-size: 12px; font-weight: 600;
   -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);

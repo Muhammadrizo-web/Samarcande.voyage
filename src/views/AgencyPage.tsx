@@ -6,6 +6,7 @@ import { Pillars } from '@/components/Sections';
 import { JsonLd } from '@/components/JsonLd';
 import { Picture } from '@/components/Picture';
 import { Info } from '@/components/Icons';
+import { PhotoCarousel } from '@/components/client/PhotoCarousel';
 import type { ViewProps } from './types';
 
 export function AgencyPage({ locale, t }: ViewProps) {
@@ -23,9 +24,14 @@ export function AgencyPage({ locale, t }: ViewProps) {
               <p className="lead">{t.agency.lead}</p>
               {t.agency.p.map((p, i) => <p key={i} className="muted agency__p">{p}</p>)}
             </div>
-            <figure className="frame city-hero__img" data-rv="clip">
-              <Picture name="terrain" alt={t.agency.photoCaption} priority sizes="(min-width: 960px) 40vw, 92vw" />
-              <figcaption className="frame__cap">{t.agency.photoCaption}</figcaption>
+            <figure className="frame city-hero__img pc" data-rv="clip">
+              <PhotoCarousel prev={t.ui.prev} next={t.ui.next} slides={([
+                ['terrain', t.agency.photoCaption],
+                ...(['g5', 'g9', 'g4', 'g7', 'gk1', 'g1'] as const).map((g) => [g, t.gallery[g]] as const),
+              ] as const).map(([name, cap], k) => ({
+                caption: cap,
+                node: <Picture name={name} alt={cap} priority={k === 0} sizes="(min-width: 960px) 40vw, 92vw" />,
+              }))} />
             </figure>
           </div>
         </div>
@@ -38,13 +44,13 @@ export function AgencyPage({ locale, t }: ViewProps) {
         </div>
       </section>
 
-      <section className="section screen" data-screen={t.agency.factsTitle}>
+      <section className="section screen" id="avis" data-screen={t.agency.factsTitle}>
         <div className="wrap wrap--narrow">
           <SectionHead eyebrow={t.agency.factsTitle} n={2} title={t.agency.factsTitle} />
           <div className="facts" data-rv="">
             {facts.map((f) => <div key={f.t}><b>{f.t}</b><p>{f.d}</p></div>)}
           </div>
-          <div className="callout" id="avis" style={{ marginTop: 28 }} data-rv=""><Info /><span>{t.agency.honest}</span></div>
+          <div className="callout" style={{ marginTop: 28 }} data-rv=""><Info /><span>{t.agency.honest}</span></div>
         </div>
       </section>
 
