@@ -98,8 +98,7 @@ export function QuoteCalc({ locale, t }: { locale: Locale; t: Dictionary }) {
             </div>
           </div>
 
-          <div className="quote-calc__col">
-            <b className="eyebrow" style={{ color: 'var(--muted)' }}>{d.options}</b>
+          <div className="quote-calc__col quote-calc__opts" role="group" aria-label={d.options}>
             <label className="opt">
               <input type="checkbox" checked={train} onChange={(e) => setTrain(e.target.checked)} />
               <span className="box"><Check size={13} /></span>
