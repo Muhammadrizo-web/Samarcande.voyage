@@ -282,8 +282,14 @@ export function Included({ locale, t }: { locale: Locale; t: Dictionary }) {
 
 /* ----------------------------------------------------------- programme */
 
-/** Jours regroupés en une seule fiche dans le programme (index 0 = jour 1) : Boukhara, jours 8 à 10. */
-const DAY_GROUPS: [number, number][] = [[7, 9]];
+/**
+ * Jours regroupés en une seule fiche dans le programme (index 0 = jour 1).
+ * `title` : titre du premier ou du dernier jour ; `meta` : infos pratiques du dernier jour seulement, ou de tous les jours.
+ */
+const DAY_GROUPS: { range: [number, number]; title: 'first' | 'last'; meta: 'last' | 'all' }[] = [
+  { range: [0, 1], title: 'first', meta: 'all' }, // vol + Tachkent, jours 1 à 2
+  { range: [7, 9], title: 'last', meta: 'last' }, // Boukhara, jours 8 à 10
+];
 
 export function DayBlock({ t, n }: { t: Dictionary; n?: number }) {
   const photoOf = (i: number, alt: string) => {
@@ -293,16 +299,19 @@ export function DayBlock({ t, n }: { t: Dictionary; n?: number }) {
   const items: { t: string; d: string; n: string; m: string; km?: number; from: number; to: number; parts?: { day: number; d: string }[] }[] = [];
   const photos: React.ReactNode[] = [];
   for (let i = 0; i < t.days.length; i++) {
-    const g = DAY_GROUPS.find(([a]) => a === i);
+    const grp = DAY_GROUPS.find((x) => x.range[0] === i);
     const d = t.days[i]!;
-    if (g) {
+    if (grp) {
+      const g = grp.range;
       const span = t.days.slice(g[0], g[1] + 1);
       const last = span[span.length - 1]!;
+      const title = grp.title === 'first' ? span[0]!.t : last.t;
       items.push({
-        t: last.t, d: span.map((x) => x.d).join(' '), n: [...new Set(span.map((x) => x.n))].join(' · '), m: last.m,
+        t: title, d: span.map((x) => x.d).join(' '), n: [...new Set(span.map((x) => x.n))].join(' · '),
+        m: grp.meta === 'all' ? [...new Set(span.map((x) => x.m))].join(' · ') : last.m,
         from: g[0] + 1, to: g[1] + 1, parts: span.map((x, k) => ({ day: g[0] + k + 1, d: x.d })),
       });
-      photos.push(photoOf(i, last.t));
+      photos.push(photoOf(i, title));
       i = g[1];
     } else {
       items.push({ ...d, km: DISTANCES.road[i] || undefined, from: i + 1, to: i + 1 });
