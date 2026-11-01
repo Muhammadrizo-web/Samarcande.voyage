@@ -102,7 +102,7 @@ export const DAY_PHOTOS: Partial<Record<number, ImageName>> = {
  * photo de Tachkent, deux cadrages différents évitent l'effet « doublon ».
  * TODO agence : une photo propre pour le jour 1 (aéroport, accueil du groupe).
  */
-export const DAY_PHOTO_POS: Partial<Record<number, string>> = { 0: '50% 22%' };
+export const DAY_PHOTO_POS: Partial<Record<number, string>> = { 0: '50% 22%', 7: '66% 50%' };
 
 /** Températures maximales moyennes à Samarcande / Boukhara (°C), indicatives. */
 export const CLIMATE = {
