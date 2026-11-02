@@ -736,8 +736,7 @@ html.is-paging .snav, html.is-paging .snav * { pointer-events: auto; }
 .navbar a:hover::after, .navbar a[aria-current='page']::after { transform: scaleX(1); }
 .navbar a[aria-current='page'] { color: var(--gold-ink); }
 .navbar a:focus-visible { outline: 3px solid var(--gold); outline-offset: -6px; border-radius: 10px; }
-/* « Demande de devis » est déjà le bouton doré de la ligne 1 dès que celui-ci est visible */
-@media (min-width: 760px) { .navbar__quote { display: none !important; } }
+/* « Demande de devis » : visible dans la barre de navigation sur tous les écrans */
 
 @media (min-width: 1120px) and (max-width: 1280px) { .navbar a { font-size: 14px; padding-inline: 10px; } }
 
