@@ -334,10 +334,11 @@
 .lang__btn { display: inline-flex; align-items: center; gap: 6px; height: 42px; padding: 0 12px; border-radius: 999px; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; }
 .lang__btn:hover { background: var(--bg-3); }
 .lang__menu {
-  position: absolute; right: 0; top: calc(100% + 8px); min-width: 180px; padding: 6px;
+  position: absolute; right: calc(100% + 8px); top: 0; min-width: 180px; padding: 6px;
   background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow-l);
-  transform-origin: top right; animation: pop 0.28s var(--e-out);
+  transform-origin: top right; animation: popLeft 0.28s var(--e-out); z-index: 60;
 }
+@keyframes popLeft { from { opacity: 0; transform: scale(0.96) translateX(6px); } }
 .lang__menu a { display: flex; justify-content: space-between; gap: 16px; padding: 10px 12px; border-radius: 10px; font-size: 14px; font-weight: 600; }
 .lang__menu a:hover { background: var(--bg-2); }
 .lang__menu a[aria-current='true'] { color: var(--gold-ink); }
