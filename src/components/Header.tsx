@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { LOCALES, LOCALE_META, href, routeFromPath, alternates, type Locale, type PageKey } from '@/lib/i18n';
-import { Burger, Chevron, Cross, Globe, Moon, Sun, Arrow } from './Icons';
+import { Chevron, Globe, Moon, Sun } from './Icons';
 import { asset } from '@/lib/asset';
 
 export type HeaderLabels = {
@@ -13,8 +13,8 @@ export type HeaderLabels = {
 };
 
 /**
- * Menu (ordre demandé par l'agence). Tout passe par le bouton « Menu » (hamburger),
- * sur ordinateur comme sur téléphone : gros caractères, lisibles par tous.
+ * Menu (ordre demandé par l'agence), toujours visible sous le logo :
+ * barre de navigation centrée sur ordinateur, rangée défilante sur téléphone.
  * « Voyages en groupe » = départs garantis (page dates) ; « Témoignages » = encart avis (page agence).
  */
 const NAV: { key: keyof HeaderLabels['nav']; page: PageKey; hash?: string; current?: boolean }[] = [
@@ -31,9 +31,9 @@ const NAV: { key: keyof HeaderLabels['nav']; page: PageKey; hash?: string; curre
 export function Brand({ locale }: { locale: Locale }) {
   return (
     <Link href={href(locale, 'home')} className="brand" aria-label="Samarcande Voyage">
-      {/* Logo officiel : version or (thème clair) et blanche (thème sombre). */}
-      <img className="brand__logo brand__logo--light" src={asset('/brand/logo.svg')} alt="" width={1972} height={365} decoding="async" />
-      <img className="brand__logo brand__logo--dark" src={asset('/brand/logo-dark.svg')} alt="" width={1972} height={365} decoding="async" />
+      {/* Logo officiel : turquoise (thème clair) et turquoise clair (thème sombre). */}
+      <img className="brand__logo brand__logo--light" src={asset('/brand/logo.svg')} alt="" width={1968} height={361} decoding="async" />
+      <img className="brand__logo brand__logo--dark" src={asset('/brand/logo-dark.svg')} alt="" width={1968} height={361} decoding="async" />
     </Link>
   );
 }
@@ -79,9 +79,9 @@ export function Header({ locale, labels }: { locale: Locale; labels: HeaderLabel
 
   const [stuck, setStuck] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const [open, setOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLUListElement>(null);
   const { theme, toggle } = useTheme(pathname);
 
   useEffect(() => {
@@ -92,8 +92,8 @@ export function Header({ locale, labels }: { locale: Locale; labels: HeaderLabel
       raf = requestAnimationFrame(() => {
         const y = window.scrollY;
         setStuck(y > 12);
-        // En mode « une section par écran » et sur téléphone/tablette (menu toujours
-        // affiché), l'en-tête ne se cache jamais : pas de va-et-vient au défilement.
+        // En mode « une section par écran » et sur téléphone/tablette,
+        // l'en-tête ne se cache jamais : pas de va-et-vient au défilement.
         const paging = document.documentElement.classList.contains('paging-on');
         const compact = window.matchMedia('(max-width: 1119px)').matches;
         setHidden(!paging && !compact && y > 480 && y > last + 4);
@@ -106,14 +106,21 @@ export function Header({ locale, labels }: { locale: Locale; labels: HeaderLabel
     return () => { window.removeEventListener('scroll', onScroll); cancelAnimationFrame(raf); };
   }, []);
 
-  useEffect(() => { setOpen(false); setLangOpen(false); }, [pathname]);
+  useEffect(() => { setLangOpen(false); }, [pathname]);
+
+  // Téléphone : la rubrique active est ramenée au centre de la rangée défilante.
+  useEffect(() => {
+    const list = navRef.current;
+    const active = list?.querySelector<HTMLElement>('[aria-current="page"]');
+    if (!list || !active || list.scrollWidth <= list.clientWidth) return;
+    list.scrollTo({ left: active.offsetLeft - (list.clientWidth - active.offsetWidth) / 2, behavior: 'smooth' });
+  }, [pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : '';
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { setOpen(false); setLangOpen(false); } };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setLangOpen(false); };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [open]);
+  }, []);
 
   useEffect(() => {
     if (!langOpen) return;
@@ -130,76 +137,48 @@ export function Header({ locale, labels }: { locale: Locale; labels: HeaderLabel
   const setLangPref = (l: Locale) => { try { localStorage.setItem('sv-lang', l); } catch { /* */ } };
 
   return (
-    <>
-      <header className={`hdr${stuck || !isHome ? ' is-stuck' : ''}${hidden && !open ? ' is-hidden' : ''}`}>
-        <div className="wrap hdr__in">
-          <Brand locale={locale} />
-          <div className="hdr__tools">
-            <div className="lang" ref={langRef}>
-              <button type="button" className="lang__btn" aria-expanded={langOpen} aria-haspopup="true" aria-label={`${LOCALE_META[locale].short} — ${labels.language}`}
-                onClick={(e) => { e.stopPropagation(); setLangOpen((v) => !v); }}>
-                <Globe /> {LOCALE_META[locale].short} <Chevron />
-              </button>
-              {langOpen && (
-                <div className="lang__menu" role="menu">
-                  {LOCALES.map((l) => (
-                    <Link key={l} role="menuitem" href={alts[l] ?? href(l, 'home')} hrefLang={l} lang={l}
-                      aria-current={l === locale ? 'true' : undefined} onClick={() => setLangPref(l)}>
-                      {LOCALE_META[l].label} <span>{LOCALE_META[l].short}</span>
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-            <button type="button" className="icon-btn theme-btn" onClick={toggle}
-              aria-label={theme === 'dark' ? labels.toLight : labels.toDark} title={theme === 'dark' ? labels.toLight : labels.toDark}>
-              <span style={{ display: 'grid' }}><Sun /><Moon /></span>
+    <header className={`hdr${stuck || !isHome ? ' is-stuck' : ''}${hidden ? ' is-hidden' : ''}`}>
+      <div className="wrap hdr__in">
+        <Brand locale={locale} />
+        <div className="hdr__tools">
+          <div className="lang" ref={langRef}>
+            <button type="button" className="lang__btn" aria-expanded={langOpen} aria-haspopup="true" aria-label={`${LOCALE_META[locale].short} — ${labels.language}`}
+              onClick={(e) => { e.stopPropagation(); setLangOpen((v) => !v); }}>
+              <Globe /> {LOCALE_META[locale].short} <Chevron />
             </button>
-            <Link href={`${href(locale, 'custom')}#calcul`} className="btn btn--primary btn--sm hdr__cta">{labels.quote}</Link>
-            <button type="button" className="menu-btn" aria-expanded={open} aria-controls="drawer" onClick={() => setOpen(true)}>
-              <Burger size={26} strokeWidth={2.2} /> <span>{labels.menu}</span>
-            </button>
-          </div>
-        </div>
-      </header>
-
-      <div id="drawer" className={`drawer${open ? ' is-open' : ''}`} aria-hidden={!open}>
-        <div className="drawer__scrim" onClick={() => setOpen(false)} />
-        <div className="drawer__panel" role="dialog" aria-modal="true" aria-label={labels.menu}>
-          <div className="drawer__top">
-            <span className="drawer__title">{labels.menu}</span>
-            <button type="button" className="menu-btn menu-btn--close" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>
-              <Cross size={24} /> <span>{labels.close}</span>
-            </button>
-          </div>
-          <nav aria-label="Navigation">
-            <ol>
-              {NAV.map((n, i) => (
-                <li key={n.key} style={{ transitionDelay: open ? `${80 + i * 35}ms` : '0ms' }}>
-                  <Link href={`${href(locale, n.page)}${n.hash ?? ''}`} tabIndex={open ? 0 : -1}
-                    className={n.key === 'quote' ? 'is-quote' : undefined}
-                    aria-current={n.current && isCurrent(n.page) ? 'page' : undefined}
-                    onClick={() => setOpen(false)}>
-                    <span className="drawer__n">{i + 1}</span>
-                    <span className="drawer__l">{labels.nav[n.key]}</span>
-                    <Arrow size={22} />
+            {langOpen && (
+              <div className="lang__menu" role="menu">
+                {LOCALES.map((l) => (
+                  <Link key={l} role="menuitem" href={alts[l] ?? href(l, 'home')} hrefLang={l} lang={l}
+                    aria-current={l === locale ? 'true' : undefined} onClick={() => setLangPref(l)}>
+                    {LOCALE_META[l].label} <span>{LOCALE_META[l].short}</span>
                   </Link>
-                </li>
-              ))}
-            </ol>
-          </nav>
-          <div className="drawer__foot">
-            <div className="drawer__langs">
-              {LOCALES.map((l) => (
-                <Link key={l} href={alts[l] ?? href(l, 'home')} hrefLang={l} tabIndex={open ? 0 : -1}
-                  aria-current={l === locale ? 'true' : undefined} onClick={() => setLangPref(l)}>
-                  {LOCALE_META[l].label}
-                </Link>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
+          <button type="button" className="icon-btn theme-btn" onClick={toggle}
+            aria-label={theme === 'dark' ? labels.toLight : labels.toDark} title={theme === 'dark' ? labels.toLight : labels.toDark}>
+            <span style={{ display: 'grid' }}><Sun /><Moon /></span>
+          </button>
+          <Link href={`${href(locale, 'custom')}#calcul`} className="btn btn--primary btn--sm hdr__cta">{labels.quote}</Link>
         </div>
       </div>
-    </>
+
+      <nav className="navbar" aria-label={labels.menu}>
+        <div className="wrap navbar__in">
+          <ul ref={navRef} data-native-scroll="">
+            {NAV.map((n) => (
+              <li key={n.key} className={n.key === 'quote' ? 'navbar__quote' : undefined}>
+                <Link href={`${href(locale, n.page)}${n.hash ?? ''}`}
+                  aria-current={n.current && isCurrent(n.page) ? 'page' : undefined}>
+                  {labels.nav[n.key]}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+    </header>
   );
 }

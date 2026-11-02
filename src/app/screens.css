@@ -514,8 +514,8 @@ html.is-paging .snav, html.is-paging .snav * { pointer-events: auto; }
 
 /* ---------------------------------------- portables à écran bas (≤ 720 px utiles) */
 @media (min-width: 1024px) and (min-height: 600px) and (max-height: 720px) {
-  :root { --hdr-h: 60px; }
-  .hdr.is-stuck { --hdr-h: 56px; }
+  :root { --bar-h: 56px; --nav-h: 44px; }
+  .hdr.is-stuck { --bar-h: 52px; --hdr-h: calc(var(--bar-h) + var(--nav-h)); }
   .brand { --logo-h: 30px; }
   .screen { padding-top: calc(var(--hdr-h) + 14px); padding-bottom: 20px; }
   .screen .sec-head { margin-bottom: 14px; gap: 8px; }
@@ -607,7 +607,7 @@ html.is-paging .snav, html.is-paging .snav * { pointer-events: auto; }
 
 /* Thème sombre : aucun texte noir — les éléments « inversés » passent en or foncé + texte blanc */
 [data-theme='dark'] :is(
-  .drawer__langs a[aria-current='true'], .day[open] .day__chev, .seg button[aria-pressed='true'],
+  .day[open] .day__chev, .seg button[aria-pressed='true'],
   .opt:has(input:checked) .box, .check:has(input:checked) .box, .step.is-on i, .city-card:hover .city-card__go,
   .faq__item.is-open .day__chev, .rx__list button[aria-pressed='true'], .dx__list button[aria-selected='true'], .snav__label
 ) { background: var(--btn); color: #fff; border-color: var(--btn); }
@@ -701,10 +701,10 @@ html.is-paging .snav, html.is-paging .snav * { pointer-events: auto; }
 .exp__go { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 800; color: var(--ink); }
 
 /* ==========================================================================
-   En-tête + menu « hamburger » (toutes tailles d'écran)
-   Une seule ligne : logo · « Demande de devis » · langue · thème · [☰ Menu].
-   Le menu s'ouvre en panneau latéral, gros caractères lisibles par tous
-   (personnes âgées comprises) sans être démesurés.
+   En-tête : ligne 1 = logo · langue · thème · « Demande de devis »
+             ligne 2 = barre de navigation toujours visible (pas de hamburger).
+   Ordinateur : rubriques centrées, soulignement or au survol / page active.
+   Téléphone : rangée de pastilles qui défile au doigt.
    ========================================================================== */
 
 .hdr__in { gap: 12px; }
@@ -714,87 +714,68 @@ html.is-paging .snav, html.is-paging .snav * { pointer-events: auto; }
 
 .lang__btn { font-size: 15px; height: 46px; }
 
-/* bouton Menu : icône + mot « Menu », grande zone de clic */
-.menu-btn {
-  display: inline-flex; align-items: center; gap: 10px; height: 50px; padding: 0 20px 0 16px;
-  border-radius: 999px; background: var(--btn); color: var(--btn-ink);
-  font-size: 18px; font-weight: 700; letter-spacing: 0.01em; line-height: 1;
-  transition: transform 0.25s var(--e-out), box-shadow 0.25s, background-color 0.2s;
+.navbar { height: var(--nav-h); border-top: 1px solid var(--line); transition: border-color 0.35s var(--e-std); }
+.hdr:not(.is-stuck) .navbar { border-top-color: color-mix(in srgb, var(--line) 60%, transparent); }
+.navbar__in { height: 100%; }
+.navbar ul {
+  list-style: none; margin: 0; padding: 0; height: 100%;
+  display: flex; align-items: stretch; justify-content: center; gap: clamp(2px, 0.6vw, 10px);
 }
-.menu-btn:hover { box-shadow: var(--shadow-l); transform: translateY(-1px); }
-.menu-btn:active { transform: scale(0.97); }
-.menu-btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
-.menu-btn--close { background: var(--bg-3); color: var(--ink); }
+.navbar li { display: flex; }
+.navbar a {
+  position: relative; display: inline-flex; align-items: center; padding: 0 clamp(10px, 1vw, 16px);
+  font-size: 15px; font-weight: 650; letter-spacing: 0.005em; color: var(--ink-2); white-space: nowrap;
+  transition: color 0.2s;
+}
+.navbar a::after {
+  content: ''; position: absolute; left: clamp(10px, 1vw, 16px); right: clamp(10px, 1vw, 16px); bottom: -1px;
+  height: 2px; border-radius: 2px; background: var(--gold);
+  transform: scaleX(0); transform-origin: center; transition: transform 0.45s var(--e-out);
+}
+.navbar a:hover { color: var(--ink); }
+.navbar a:hover::after, .navbar a[aria-current='page']::after { transform: scaleX(1); }
+.navbar a[aria-current='page'] { color: var(--gold-ink); }
+.navbar a:focus-visible { outline: 3px solid var(--gold); outline-offset: -6px; border-radius: 10px; }
+/* « Demande de devis » est déjà le bouton doré de la ligne 1 dès que celui-ci est visible */
+@media (min-width: 760px) { .navbar__quote { display: none !important; } }
 
-/* panneau */
-.drawer { position: fixed; inset: 0; z-index: 60; visibility: hidden; pointer-events: none; transition: visibility 0s 0.45s; }
-.drawer.is-open { visibility: visible; pointer-events: auto; transition: none; }
-.drawer__scrim {
-  position: absolute; inset: 0; background: rgb(10 14 18 / 0.45);
-  opacity: 0; transition: opacity 0.35s var(--e-std);
-}
-.drawer.is-open .drawer__scrim { opacity: 1; }
-.drawer__panel {
-  position: absolute; inset: 0 0 0 auto; width: min(100%, 520px);
-  display: grid; grid-template-rows: auto 1fr auto; gap: 8px;
-  background: var(--bg); background-image: var(--girih); background-size: 120px;
-  padding: 0 clamp(18px, 4vw, 36px) 24px; overflow-y: auto; overscroll-behavior: contain;
-  box-shadow: -20px 0 60px rgb(0 0 0 / 0.18);
-  transform: translateX(100%); transition: transform 0.45s var(--e-out);
-}
-.drawer.is-open .drawer__panel { transform: none; }
-.drawer__top { min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--line); }
-.drawer__title { font-size: 15px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+@media (min-width: 1120px) and (max-width: 1280px) { .navbar a { font-size: 14px; padding-inline: 10px; } }
 
-.drawer nav { padding-block: 8px; }
-.drawer nav ol { list-style: none; margin: 0; padding: 0; display: grid; }
-.drawer nav li {
-  border-bottom: 1px solid var(--line);
-  opacity: 0; transform: translateX(16px); transition: opacity 0.4s var(--e-out), transform 0.45s var(--e-out);
+/* tablette + téléphone : pastilles défilantes */
+@media (max-width: 1119px) {
+  .navbar__in { padding-inline: 0; max-width: none; }
+  .navbar ul {
+    justify-content: flex-start; align-items: center; gap: 8px;
+    padding-inline: var(--gutter); overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity; scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 var(--gutter), #000 calc(100% - var(--gutter)), transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 var(--gutter), #000 calc(100% - var(--gutter)), transparent 100%);
+  }
+  .navbar ul::-webkit-scrollbar { display: none; }
+  .navbar li { flex: none; scroll-snap-align: center; }
+  .navbar a {
+    height: 34px; padding: 0 14px; border-radius: 999px; font-size: 14.5px;
+    border: 1px solid var(--line-2); background: color-mix(in srgb, var(--surface) 70%, transparent); color: var(--ink);
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .navbar a::after { display: none; }
+  .navbar a:hover { border-color: var(--gold); }
+  .navbar a[aria-current='page'] { background: var(--lapis); border-color: var(--lapis); color: #fff; }
+  [data-theme='dark'] .navbar a[aria-current='page'] { background: var(--btn); border-color: var(--btn); color: #fff; }
+  .navbar__quote a { border-color: var(--gold); color: var(--gold-ink); }
 }
-.drawer.is-open nav li { opacity: 1; transform: none; }
-.drawer nav a {
-  display: flex; align-items: center; gap: 16px; min-height: 64px; padding: 10px 6px;
-  font-family: var(--f-body); font-size: clamp(21px, 1.2vw + 14px, 25px); font-weight: 650; line-height: 1.25;
-  color: var(--ink); border-radius: 12px; transition: background-color 0.2s, color 0.2s;
-}
-.drawer nav a:hover { background: var(--bg-2); }
-.drawer nav a:focus-visible { outline: 3px solid var(--gold); outline-offset: -3px; }
-.drawer__n {
-  flex: none; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%;
-  border: 1.5px solid var(--line-2); font-size: 15px; font-weight: 800; color: var(--muted);
-}
-.drawer__l { flex: 1; }
-.drawer nav a > svg { flex: none; color: var(--gold-ink); opacity: 0.55; transition: transform 0.3s var(--e-out), opacity 0.2s; }
-.drawer nav a:hover > svg { transform: translateX(4px); opacity: 1; }
-.drawer nav a[aria-current='page'] { color: var(--gold-ink); }
-.drawer nav a[aria-current='page'] .drawer__n { background: var(--gold); border-color: var(--gold); color: #fff; }
-.drawer nav a.is-quote .drawer__l { color: var(--gold-ink); }
-
-.drawer__foot { padding-top: 12px; }
-.drawer__langs { display: flex; gap: 8px; flex-wrap: wrap; }
-.drawer__langs a { padding: 10px 16px; border: 1px solid var(--line-2); border-radius: 999px; font-size: 16px; font-weight: 700; }
-.drawer__langs a[aria-current='true'] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 
 /* téléphone */
 @media (max-width: 560px) {
+  :root { --bar-h: 60px; --nav-h: 50px; }
+  .hdr.is-stuck { --bar-h: 56px; --hdr-h: calc(var(--bar-h) + var(--nav-h)); }
   .hdr .lang { display: block; }
-  .hdr .theme-btn { display: none; }
   .lang__btn { height: 44px; padding: 0 10px; gap: 0; font-size: 0; }
   .lang__btn svg { width: 22px; height: 22px; }
   .lang__btn svg:last-of-type { display: none; }
   .brand, .hdr.is-stuck .brand { --logo-h: 28px; }
-  .menu-btn { height: 46px; padding: 0 16px 0 13px; font-size: 17px; gap: 8px; }
-  .drawer__top { min-height: 72px; }
-  .drawer nav a { min-height: 58px; gap: 12px; }
-  .drawer__n { width: 30px; height: 30px; font-size: 14px; }
+  .navbar a { height: 32px; padding: 0 12px; font-size: 14px; }
 }
-@media (max-width: 360px) { .menu-btn span { display: none; } .menu-btn { padding: 0 12px; } }
-
-@media (prefers-reduced-motion: reduce) {
-  .drawer__panel, .drawer nav li, .drawer__scrim { transition: none !important; }
-}
-@media print { .menu-btn { display: none !important; } }
 
 /* « Pourquoi nous » : photos qui défilent avec flèches */
 .pc .pc__track { position: absolute; inset: 0; touch-action: pan-y; }
