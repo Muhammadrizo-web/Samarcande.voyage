@@ -269,6 +269,8 @@ const en: Dictionary = {
     nightsHere: 'Nights here',
     days: 'Days',
     highlights: 'What you see',
+    history: 'History',
+    historyTitle: 'What the city has lived through',
     otherCities: 'The other stops',
     unesco: 'UNESCO World Heritage',
   },
@@ -277,6 +279,18 @@ const en: Dictionary = {
     tas: {
       title: 'Tashkent, the capital',
       lead: 'the gateway to the country, with grand squares, the Navoi opera and a museum-like metro.',
+      history: [
+        'Tashkent grew around the oasis of Chach in the first century AD, a Silk Road stage between China, Khiva, Bukhara and the Ferghana valley. The Arab conquest destroyed it in 715; it rose again under the name Binkent.',
+        'Razed by the Mongols in 1220 and rebuilt under the Timurids, the city passed to the Kokand khanate in the early nineteenth century, then to Russian rule. In 1930 it replaced Samarkand as the capital.',
+        'The earthquake of 26 April 1966 flattened much of the city. The rebuilding gave it today’s face: wide avenues, mosaics, and a metro from the 1970s in which every station has its own theme.',
+      ],
+      timeline: [
+        { y: '1st c.', t: 'The Chach oasis, a Silk Road stage' },
+        { y: '715', t: 'The Arab conquest destroys the city' },
+        { y: '1220', t: 'Genghis Khan' },
+        { y: '1930', t: 'Capital of the Uzbek Soviet Socialist Republic' },
+        { y: '1966', t: 'The earthquake of 26 April, then the rebuilding' },
+      ],
       intro: [
         'An oasis city in the Chirchiq valley, rebuilt after the 1966 earthquake, Tashkent is the capital and the gateway to the country: wide avenues, parks, fountains and a metro in which every station is a stage set.',
         'This is where the tour begins. A first day to settle in gently, then the first plov shared in a family home — the best way into the country.',
@@ -293,6 +307,18 @@ const en: Dictionary = {
     sam: {
       title: 'Samarkand, the blue city',
       lead: 'the Registan, Gur-e-Amir and Shah-i-Zinda: three nights in Tamerlane’s capital.',
+      history: [
+        'Founded by the Sogdians some two thousand seven hundred years ago, Samarkand was born in the age of Babylon, Athens and Rome. The Afrasiab site north-east of today’s city still holds its ramparts and water system.',
+        'Alexander the Great took the city in 330 BC and it stayed under Greek influence for three centuries. Later, craftsmen from China passed on the secret of papermaking here, and from Samarkand it reached the Islamic world and then Europe.',
+        'In 1369 Tamerlane made it the capital of his empire and drew in its finest builders. His grandson Ulugh Beg, an astronomer, built an observatory whose underground sextant can still be visited.',
+      ],
+      timeline: [
+        { y: '700 BC', t: 'Sogdian foundation, the Afrasiab site' },
+        { y: '330 BC', t: 'Alexander the Great takes the city' },
+        { y: '1220', t: 'Genghis Khan destroys it' },
+        { y: '1369', t: 'Tamerlane makes it his capital' },
+        { y: '2001', t: 'Inscribed on the UNESCO World Heritage list' },
+      ],
       intro: [
         'A Silk Road crossroads for more than two thousand years and Tamerlane’s capital in the late 14th century, Samarkand has been a UNESCO World Heritage site since 2001 as a “crossroads of cultures”.',
         'Three nights here: time to see the Registan by day and lit up at night, to walk through the Shah-i-Zinda necropolis and to reach Shakhrisabz on a day trip.',
@@ -310,6 +336,18 @@ const en: Dictionary = {
     shk: {
       title: 'Shakhrisabz, Tamerlane’s birthplace',
       lead: 'the remains of Ak-Saray and the Kok-Gumbaz mosque, on a day trip from Samarkand.',
+      history: [
+        'Before it became the “green city” it was called Kash, already one of the oldest towns in Central Asia: more than two thousand seven hundred years old, two centuries of them inside the Achaemenid Persian empire.',
+        'Alexander the Great spent several winters here and married Roxana in 328 BC. Tamerlane was born here in 1336; once master of the empire he meant to make his birthplace a capital and began the vast Ak-Saray palace.',
+        'The town lost its independence in 1870, when the Russians helped the emir of Bukhara take it. Today it lives from its crafts: knotted carpets and embroidery.',
+      ],
+      timeline: [
+        { y: '700 BC', t: 'The town of Kash, one of the oldest in Central Asia' },
+        { y: '328 BC', t: 'Alexander the Great marries Roxana here' },
+        { y: '1336', t: 'Tamerlane is born, on 9 April' },
+        { y: '1870', t: 'The town falls to the emir of Bukhara' },
+        { y: '2000', t: 'The historic centre inscribed by UNESCO' },
+      ],
       intro: [
         'Tamerlane was born here in 1336 and wanted to make it his capital. Of his “white palace”, Ak-Saray, the pillars of a gateway that was once among the tallest in the Islamic world still stand. The historic centre has been on the UNESCO list since 2000.',
         'The excursion is a day trip from Samarkand. The way back crosses the pass by car — the road is closed to coaches, and it is one of the finest landscapes of the trip.',
@@ -326,6 +364,17 @@ const en: Dictionary = {
     yan: {
       title: 'The Kyzylkum, a night in a yurt',
       lead: 'Nurata, Lake Aydarkul and the desert on Bactrian camels.',
+      history: [
+        'Nurata stands on the site of the old Sogdian town of Nur. Alexander the Great had a fortress built here around 329 BC; from its walls a path leads to Bronze Age petroglyphs.',
+        'The Kyzylkum, the “red sands”, covers close to three hundred thousand square kilometres between the Amu Darya and the Syr Darya. Caravans crossed it from well to well to link Bukhara with Khiva.',
+        'Lake Aydarkul is recent: born in 1969 from a flood of the Syr Darya, it now draws fishermen and migrating birds to the edge of the desert.',
+      ],
+      timeline: [
+        { y: '329 BC', t: 'Alexander the Great’s fortress at Nurata' },
+        { y: 'Bronze Age', t: 'The petroglyphs of the Sarmish hills' },
+        { y: '16th c.', t: 'The Bukhara–Khiva caravan road crosses the desert' },
+        { y: '1969', t: 'Lake Aydarkul is formed' },
+      ],
       intro: [
         'Between Samarkand and Bukhara stretches the Kyzylkum, the “red sands”. The day starts in Nurata, below the fortress attributed to Alexander the Great, then reaches Lake Aydarkul, formed in 1969 by a flood of the Syr Darya.',
         'In the evening, the Yangikazgan yurt camp: dinner in the open air, Akyn singing around the fire and a night under the starriest sky of the trip. Yurts sleep five to six people.',
@@ -342,6 +391,18 @@ const en: Dictionary = {
     buk: {
       title: 'Bukhara, the museum city',
       lead: 'more than a hundred and forty monuments, the Kalon minaret and the trading domes: three nights here.',
+      history: [
+        'The name comes from Sogdian and means “fortunate place”. An oasis on the Zarafshan at the edge of the Kyzylkum, Bukhara has been inhabited for close to three thousand years and holds a hundred and forty listed sites.',
+        'Islam arrived in 710. In the tenth century, under the Samanids, the city became the intellectual heart of the Muslim world: the first medresa of Islam was built here, Imam al-Bukhari compiled the hadith here, and Ibn Sina — Avicenna — taught medicine here before he was twenty.',
+        'Destroyed by Genghis Khan in 1220 and absorbed into the Timurid empire in 1370, Bukhara was the capital of a khanate from the sixteenth century to the early twentieth. Of the three hundred and sixty medresas of that time, a hundred and ten still stand.',
+      ],
+      timeline: [
+        { y: '500 BC', t: 'The oasis within the Persian satrapy of Sogdiana' },
+        { y: '710', t: 'The Arab conquest brings Islam' },
+        { y: '10th c.', t: 'Samanid golden age: al-Bukhari, Avicenna' },
+        { y: '1220', t: 'Genghis Khan takes the city' },
+        { y: '1993', t: 'The historic centre inscribed by UNESCO' },
+      ],
       intro: [
         'More than two thousand years of history and over a hundred and forty listed monuments: Bukhara’s historic centre has been on the UNESCO list since 1993. You walk all of it, from the trading domes to the Lyab-i-Hauz pool.',
         'Three nights here, including two full days: enough to see the major monuments without rushing, and to enjoy the old town lit up in the evening from a terrace.',
@@ -359,6 +420,18 @@ const en: Dictionary = {
     khi: {
       title: 'Khiva, behind its walls',
       lead: 'Itchan Kala, the first site in Uzbekistan on the UNESCO list, explored on foot.',
+      history: [
+        'Legend credits the founding of Khiva to Shem, son of Noah: crossing the desert at the head of his caravan he is said to have drunk from a well and cried “He vokh”. The irrigation systems of the region, for their part, are attested two thousand years before our era.',
+        'The northernmost stage of the Silk Road, the town was taken by the Arabs in 712, became from 994 the heart of the principality of Khorezm, and from the sixteenth century to the early twentieth the capital of the khanate of Khiva.',
+        'Khorezm gave the world al-Khwarizmi, whose name became “algorithm” and whose treatise al-jabr gave us algebra, and al-Biruni, who described the Earth turning on its axis five centuries before Copernicus.',
+      ],
+      timeline: [
+        { y: '2000 BC', t: 'The first irrigation systems of Khorezm' },
+        { y: '712', t: 'The Arab conquest' },
+        { y: '994', t: 'Khiva at the heart of the principality of Khorezm' },
+        { y: '1220', t: 'Genghis Khan sacks Khorezm' },
+        { y: '1990', t: 'Itchan Kala, the first Uzbek site on the UNESCO list' },
+      ],
       intro: [
         'Itchan Kala, Khiva’s inner town, is entirely enclosed by mud-brick walls. The first site in Uzbekistan to be listed as World Heritage, in 1990, it packs madrasas, mosques and palaces into an area you can cross on foot in twenty minutes.',
         'After the long drive across the Kyzylkum, a full day inside the walls, lunch in an old madrasa and the farewell dinner with a show.',

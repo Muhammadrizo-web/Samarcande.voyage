@@ -269,6 +269,8 @@ const de: Dictionary = {
     nightsHere: 'Nächte vor Ort',
     days: 'Tage',
     highlights: 'Sehenswert',
+    history: 'Geschichte',
+    historyTitle: 'Was die Stadt erlebt hat',
     otherCities: 'Die anderen Stationen',
     unesco: 'UNESCO-Welterbe',
   },
@@ -277,6 +279,18 @@ const de: Dictionary = {
     tas: {
       title: 'Taschkent, die Hauptstadt',
       lead: 'das Tor zum Land, mit großen Plätzen, der Navoi-Oper und einer Metro wie ein Museum.',
+      history: [
+        'Taschkent entstand im 1. Jahrhundert n. Chr. rund um die Oase Tschatsch, eine Station der Seidenstraße zwischen China, Chiwa, Buchara und dem Ferghanatal. 715 zerstörte die arabische Eroberung die Stadt; sie erstand als Binkent neu.',
+        '1220 von den Mongolen vernichtet und unter den Timuriden wieder aufgebaut, fiel die Stadt Anfang des 19. Jahrhunderts an das Khanat Kokand und danach an Russland. 1930 löste sie Samarkand als Hauptstadt ab.',
+        'Das Erdbeben vom 26. April 1966 zerstörte weite Teile der Stadt. Der Wiederaufbau gab ihr das heutige Gesicht: breite Alleen, Mosaike und eine Metro aus den 1970er-Jahren, in der jede Station ihr eigenes Thema hat.',
+      ],
+      timeline: [
+        { y: '1. Jh.', t: 'Die Oase Tschatsch an der Seidenstraße' },
+        { y: '715', t: 'Die arabische Eroberung zerstört die Stadt' },
+        { y: '1220', t: 'Dschingis Khan' },
+        { y: '1930', t: 'Hauptstadt der Usbekischen SSR' },
+        { y: '1966', t: 'Das Erdbeben vom 26. April und der Wiederaufbau' },
+      ],
       intro: [
         'Eine Oasenstadt im Tal des Tschirtschik, nach dem Erdbeben von 1966 neu aufgebaut: Taschkent ist Hauptstadt und Tor zum Land — breite Alleen, Parks, Brunnen und eine Metro, in der jede Station ein Bühnenbild ist.',
         'Hier beginnt die Reise. Ein erster Tag zum sanften Ankommen, dann der erste Plow bei einer Familie — der beste Weg, das Land kennenzulernen.',
@@ -293,6 +307,18 @@ const de: Dictionary = {
     sam: {
       title: 'Samarkand, die blaue Stadt',
       lead: 'Registan, Gur-Emir und Schah-i-Sinda: drei Nächte in Timurs Hauptstadt.',
+      history: [
+        'Vor rund zweitausendsiebenhundert Jahren von den Sogdern gegründet, entstand Samarkand zur Zeit von Babylon, Athen und Rom. Die Ausgrabungsstätte Afrasiab nordöstlich der heutigen Stadt bewahrt Stadtmauern und Wasserleitungen.',
+        '330 v. Chr. nahm Alexander der Große die Stadt ein; drei Jahrhunderte lang blieb sie griechisch geprägt. Später gaben Handwerker aus China hier das Geheimnis der Papierherstellung weiter — von Samarkand aus erreichte es die islamische Welt und dann Europa.',
+        '1369 machte Timur die Stadt zur Hauptstadt seines Reiches und holte die besten Baumeister her. Sein Enkel Ulugh Beg, Astronom, errichtete eine Sternwarte, deren unterirdischer Sextant bis heute zu sehen ist.',
+      ],
+      timeline: [
+        { y: '700 v. Chr.', t: 'Sogdische Gründung, Stätte Afrasiab' },
+        { y: '330 v. Chr.', t: 'Alexander der Große nimmt die Stadt ein' },
+        { y: '1220', t: 'Dschingis Khan zerstört sie' },
+        { y: '1369', t: 'Timur macht sie zu seiner Hauptstadt' },
+        { y: '2001', t: 'Aufnahme in das UNESCO-Welterbe' },
+      ],
       intro: [
         'Seit mehr als zweitausend Jahren Kreuzung der Seidenstraße und Ende des 14. Jahrhunderts Hauptstadt Timurs: Samarkand ist seit 2001 als „Schnittpunkt der Kulturen“ UNESCO-Welterbe.',
         'Drei Nächte vor Ort: Zeit genug, um den Registan bei Tag und beleuchtet zu sehen, durch die Nekropole Schah-i-Sinda zu gehen und einen Tagesausflug nach Schachrisabs zu machen.',
@@ -310,6 +336,18 @@ const de: Dictionary = {
     shk: {
       title: 'Schachrisabs, Timurs Geburtsstadt',
       lead: 'die Reste von Ak-Sarai und die Kok-Gumbaz-Moschee, als Tagesausflug von Samarkand.',
+      history: [
+        'Bevor sie die „grüne Stadt“ wurde, hieß sie Kasch und zählte schon damals zu den ältesten Städten Zentralasiens: über zweitausendsiebenhundert Jahre alt, zwei Jahrhunderte davon im persischen Achämenidenreich.',
+        'Alexander der Große verbrachte hier mehrere Winter und heiratete 328 v. Chr. Roxane. 1336 wurde hier Timur geboren; als Herr des Reiches wollte er seine Geburtsstadt zur Hauptstadt machen und begann den gewaltigen Ak-Sarai-Palast.',
+        'Ihre Eigenständigkeit verlor die Stadt 1870, als die Russen dem Emir von Buchara halfen, sie einzunehmen. Heute lebt sie vom Handwerk: Knüpfteppiche und Stickerei.',
+      ],
+      timeline: [
+        { y: '700 v. Chr.', t: 'Die Stadt Kasch, eine der ältesten Zentralasiens' },
+        { y: '328 v. Chr.', t: 'Alexander der Große heiratet hier Roxane' },
+        { y: '1336', t: 'Geburt Timurs am 9. April' },
+        { y: '1870', t: 'Die Stadt fällt an den Emir von Buchara' },
+        { y: '2000', t: 'Das historische Zentrum wird UNESCO-Welterbe' },
+      ],
       intro: [
         'Timur wurde hier 1336 geboren und wollte die Stadt zu seiner Hauptstadt machen. Von seinem „weißen Palast“ Ak-Sarai stehen noch die Pfeiler eines Portals, das zu den höchsten der islamischen Welt zählte. Die Altstadt ist seit 2000 UNESCO-Welterbe.',
         'Der Ausflug ist eine Tagestour ab Samarkand. Zurück geht es im Pkw über den Pass — für Busse gesperrt und eine der schönsten Landschaften der Reise.',
@@ -326,6 +364,17 @@ const de: Dictionary = {
     yan: {
       title: 'Die Kysylkum, eine Nacht in der Jurte',
       lead: 'Nurata, der Aydarkul-See und die Wüste auf Baktrischen Kamelen.',
+      history: [
+        'Nurata liegt auf dem Gelände der alten sogdischen Stadt Nur. Um 329 v. Chr. ließ Alexander der Große hier eine Festung errichten; von ihren Mauern führt ein Pfad zu Petroglyphen aus der Bronzezeit.',
+        'Die Kysylkum, die „roten Sände“, erstreckt sich über fast dreihunderttausend Quadratkilometer zwischen Amudarja und Syrdarja. Die Karawanen durchquerten sie von Brunnen zu Brunnen, um Buchara mit Chiwa zu verbinden.',
+        'Der Aydarkul-See dagegen ist jung: 1969 durch ein Hochwasser des Syrdarja entstanden, zieht er heute Fischer und Zugvögel an den Rand der Wüste.',
+      ],
+      timeline: [
+        { y: '329 v. Chr.', t: 'Die Festung Alexanders des Großen in Nurata' },
+        { y: 'Bronzezeit', t: 'Die Petroglyphen der Sarmisch-Hügel' },
+        { y: '16. Jh.', t: 'Die Karawanenstraße Buchara–Chiwa quert die Wüste' },
+        { y: '1969', t: 'Entstehung des Aydarkul-Sees' },
+      ],
       intro: [
         'Zwischen Samarkand und Buchara erstreckt sich die Kysylkum, der „rote Sand“. Der Tag beginnt in Nurata unterhalb der Festung, die Alexander dem Großen zugeschrieben wird, und führt an den Aydarkul-See, der 1969 durch ein Hochwasser des Syrdarja entstand.',
         'Am Abend das Jurtenlager von Jangikasgan: Abendessen unter freiem Himmel, Akyn-Gesang am Feuer und eine Nacht unter dem klarsten Sternenhimmel der Reise. Eine Jurte beherbergt fünf bis sechs Personen.',
@@ -342,6 +391,18 @@ const de: Dictionary = {
     buk: {
       title: 'Buchara, die Museumsstadt',
       lead: 'über hundertvierzig Baudenkmäler, das Kalon-Minarett und die Handelskuppeln: drei Nächte vor Ort.',
+      history: [
+        'Der Name stammt aus dem Sogdischen und bedeutet „glücklicher Ort“. Als Oase am Serafschan am Rand der Kysylkum ist Buchara seit fast dreitausend Jahren bewohnt und bewahrt hundertvierzig geschützte Stätten.',
+        '710 kam der Islam in die Stadt. Im 10. Jahrhundert wurde sie unter den Samaniden zum geistigen Zentrum der muslimischen Welt: Hier entstand die erste Medrese des Islam, hier stellte Imam al-Buchari die Hadithe zusammen, und hier lehrte Ibn Sina — Avicenna — noch vor seinem zwanzigsten Lebensjahr Medizin.',
+        '1220 von Dschingis Khan zerstört, 1370 ins Timuridenreich eingegliedert, war Buchara vom 16. bis zum frühen 20. Jahrhundert Hauptstadt eines Khanats. Von den damals dreihundertsechzig Medresen stehen heute noch hundertzehn.',
+      ],
+      timeline: [
+        { y: '500 v. Chr.', t: 'Die Oase in der persischen Satrapie Sogdien' },
+        { y: '710', t: 'Die arabische Eroberung bringt den Islam' },
+        { y: '10. Jh.', t: 'Goldenes Zeitalter der Samaniden: al-Buchari, Avicenna' },
+        { y: '1220', t: 'Dschingis Khan nimmt die Stadt ein' },
+        { y: '1993', t: 'Das historische Zentrum wird UNESCO-Welterbe' },
+      ],
       intro: [
         'Mehr als zweitausend Jahre Geschichte und über hundertvierzig geschützte Baudenkmäler: Die Altstadt von Buchara ist seit 1993 UNESCO-Welterbe. Man erkundet sie vollständig zu Fuß, von den Handelskuppeln bis zum Becken Ljabi-Hauz.',
         'Drei Nächte, davon zwei volle Tage: genug, um die großen Bauwerke ohne Eile zu sehen und abends die beleuchtete Altstadt von einer Terrasse aus zu genießen.',
@@ -359,6 +420,18 @@ const de: Dictionary = {
     khi: {
       title: 'Chiwa hinter seinen Mauern',
       lead: 'Itschan Kala, die erste UNESCO-Stätte Usbekistans, zu Fuß erkundet.',
+      history: [
+        'Der Legende nach gründete Sem, der Sohn Noahs, Chiwa: Als er mit seiner Karawane die Wüste durchquerte, soll er aus einem Brunnen getrunken und „He woch“ gerufen haben. Die Bewässerungssysteme der Region sind dagegen schon zweitausend Jahre vor unserer Zeitrechnung belegt.',
+        'Als nördlichste Station der Seidenstraße wurde die Stadt 712 von den Arabern erobert, ab 994 Herzstück des Fürstentums Choresm und vom 16. bis zum frühen 20. Jahrhundert Hauptstadt des Khanats Chiwa.',
+        'Choresm schenkte der Welt al-Chwarizmi, aus dessen Namen das Wort „Algorithmus“ und aus dessen Werk al-dschabr die Algebra hervorging, und al-Biruni, der die Drehung der Erde um ihre Achse fünf Jahrhunderte vor Kopernikus beschrieb.',
+      ],
+      timeline: [
+        { y: '2000 v. Chr.', t: 'Die ersten Bewässerungssysteme Choresms' },
+        { y: '712', t: 'Die arabische Eroberung' },
+        { y: '994', t: 'Chiwa als Herz des Fürstentums Choresm' },
+        { y: '1220', t: 'Dschingis Khan plündert Choresm' },
+        { y: '1990', t: 'Itschan Kala, erste UNESCO-Stätte des Landes' },
+      ],
       intro: [
         'Itschan Kala, die Innenstadt von Chiwa, ist vollständig von Lehmmauern umgeben. Als erste Stätte Usbekistans 1990 zum Welterbe erklärt, vereint sie Medresen, Moscheen und Paläste auf einer Fläche, die man in zwanzig Minuten zu Fuß durchquert.',
         'Nach der langen Fahrt durch die Kysylkum ein ganzer Tag innerhalb der Mauern, ein Mittagessen in einer alten Medrese und das Abschiedsessen mit Darbietung.',

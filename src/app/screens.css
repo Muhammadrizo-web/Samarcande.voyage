@@ -56,6 +56,18 @@
 .city-hero__img { position: relative; aspect-ratio: 4 / 5; width: 100%; max-width: 560px; justify-self: end; box-shadow: var(--shadow-m); }
 .city-detail { display: grid; gap: clamp(32px, 4vw, 64px); }
 @media (min-width: 1000px) { .city-detail { grid-template-columns: 0.9fr 1.1fr; align-items: center; } }
+
+/* ----------------------------------------- histoire de la ville + chronologie */
+
+.city-hist { display: grid; gap: clamp(28px, 3.5vw, 56px); align-items: start; }
+@media (min-width: 1000px) { .city-hist { grid-template-columns: 1.25fr 0.75fr; } }
+.city-hist__text { display: grid; gap: clamp(12px, 1.8vh, 20px); }
+.city-hist__text p { color: var(--ink-2); font-size: clamp(15px, 1.15vw, 17px); line-height: 1.62; max-width: 62ch; }
+.tl { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.tl li { display: grid; grid-template-columns: minmax(74px, auto) 1fr; gap: 14px; align-items: baseline; padding: clamp(9px, 1.4vh, 15px) 0; border-bottom: 1px solid var(--line); }
+.tl b { font-family: var(--f-display); font-size: clamp(17px, 1.5vw, 21px); font-weight: 600; color: var(--gold-ink); font-variant-numeric: tabular-nums; }
+.tl span { font-size: clamp(13.5px, 1vw, 15px); color: var(--ink-2); }
+@media (max-width: 560px) { .tl li { grid-template-columns: 1fr; gap: 2px; } }
 .agency__p { font-size: 15.5px; max-width: 58ch; }
 
 /* ---------------------------------------------------------- moments, carnet */

@@ -269,6 +269,8 @@ const fr = {
     nightsHere: 'Nuits sur place',
     days: 'Jours',
     highlights: 'À voir',
+    history: 'Histoire',
+    historyTitle: 'Ce que la ville a vécu',
     otherCities: 'Les autres étapes',
     unesco: 'Patrimoine mondial UNESCO',
   },
@@ -277,6 +279,18 @@ const fr = {
     tas: {
       title: 'Tachkent, la capitale',
       lead: 'la porte d’entrée du pays, entre grandes places, opéra Navoï et métro-musée.',
+      history: [
+        'Tachkent naît autour de l’oasis de Tchatch, au Iᵉʳ siècle de notre ère : une étape de la Route de la Soie entre la Chine, Khiva, Boukhara et la vallée de Ferghana. La conquête arabe la détruit en 715 ; elle renaît sous le nom de Binkent.',
+        'Rasée par les Mongols en 1220, relevée par les Timourides, la ville passe au khanat de Kokand au début du XIXᵉ siècle, puis sous administration russe. En 1930 elle remplace Samarcande comme capitale.',
+        'Le séisme du 26 avril 1966 détruit une grande partie de la ville. La reconstruction lui donne son visage actuel : larges avenues, mosaïques, et un métro des années 1970 dont chaque station a son thème.',
+      ],
+      timeline: [
+        { y: 'Iᵉʳ s.', t: 'L’oasis de Tchatch, étape de la Route de la Soie' },
+        { y: '715', t: 'La conquête arabe détruit la ville' },
+        { y: '1220', t: 'Gengis Khan' },
+        { y: '1930', t: 'Capitale de la République socialiste d’Ouzbékistan' },
+        { y: '1966', t: 'Le séisme du 26 avril, puis la reconstruction' },
+      ],
       intro: [
         'Ville-oasis de la vallée du Tchirtchik, reconstruite après le séisme de 1966, Tachkent est la capitale et la porte d’entrée du pays : larges avenues, parcs, fontaines et un métro dont chaque station est un décor.',
         'C’est ici que commence le circuit. Une première journée pour s’acclimater en douceur, puis le premier plov partagé chez l’habitant — la meilleure façon d’entrer dans le pays.',
@@ -293,6 +307,18 @@ const fr = {
     sam: {
       title: 'Samarcande, la cité bleue',
       lead: 'le Réghistan, Gour-Emir et Chakhi-Zinda, trois nuits au cœur de la capitale de Tamerlan.',
+      history: [
+        'Fondée par les Sogdiens il y a environ deux mille sept cents ans, Samarcande est née à l’époque de Babylone, d’Athènes et de Rome. Le site d’Afrasiab, au nord-est de la ville actuelle, en conserve les remparts et le réseau d’adduction d’eau.',
+        'Alexandre le Grand la prend en 330 avant notre ère ; la ville reste trois siècles sous influence grecque. Plus tard, les artisans venus de Chine y transmettent le secret du papier, qui gagne de là le monde islamique puis l’Europe.',
+        'En 1369 Tamerlan en fait la capitale de son empire et y attire les meilleurs bâtisseurs. Son petit-fils Oulough Beg, astronome, y installe un observatoire dont le sextant souterrain se visite encore.',
+      ],
+      timeline: [
+        { y: '-700', t: 'Fondation sogdienne, site d’Afrasiab' },
+        { y: '-330', t: 'Alexandre le Grand prend la ville' },
+        { y: '1220', t: 'Gengis Khan détruit la cité' },
+        { y: '1369', t: 'Tamerlan en fait sa capitale' },
+        { y: '2001', t: 'Inscription au patrimoine mondial de l’UNESCO' },
+      ],
       intro: [
         'Carrefour de la Route de la Soie depuis plus de deux millénaires, capitale de Tamerlan à la fin du XIVᵉ siècle, Samarcande est inscrite au patrimoine mondial de l’UNESCO depuis 2001 comme « carrefour de cultures ».',
         'Trois nuits sur place : le temps de voir le Réghistan de jour puis illuminé, de marcher dans la nécropole de Chakhi-Zinda et de rayonner jusqu’à Chakhrisabz.',
@@ -310,6 +336,18 @@ const fr = {
     shk: {
       title: 'Chakhrisabz, la ville natale de Tamerlan',
       lead: 'les vestiges d’Ak-Saraï et la mosquée Kok-Goumbaz, en excursion depuis Samarcande.',
+      history: [
+        'Avant d’être la « ville verte », elle s’appelait Kash et comptait déjà parmi les plus anciennes cités d’Asie centrale : plus de deux mille sept cents ans, dont deux siècles dans l’empire perse achéménide.',
+        'Alexandre le Grand y passa plusieurs hivers et y épousa Roxane en 328 avant notre ère. En 1336 Tamerlan y naît ; devenu maître de l’empire, il veut faire de sa ville natale une capitale et lance l’immense palais d’Ak-Saraï.',
+        'La ville perd son autonomie en 1870, quand les Russes aident l’émir de Boukhara à la conquérir. Elle vit aujourd’hui de son artisanat : tapis noués et broderies.',
+      ],
+      timeline: [
+        { y: '-700', t: 'La cité de Kash, l’une des plus anciennes d’Asie centrale' },
+        { y: '-328', t: 'Alexandre le Grand y épouse Roxane' },
+        { y: '1336', t: 'Naissance de Tamerlan, le 9 avril' },
+        { y: '1870', t: 'La ville passe sous le contrôle de l’émir de Boukhara' },
+        { y: '2000', t: 'Le centre historique inscrit à l’UNESCO' },
+      ],
       intro: [
         'Tamerlan y est né en 1336 et voulut en faire sa capitale. De son « palais blanc », Ak-Saraï, subsistent les piliers d’un portail qui comptait parmi les plus hauts du monde islamique. Le centre historique est inscrit à l’UNESCO depuis 2000.',
         'L’excursion se fait à la journée depuis Samarcande. Le retour passe par le col en voiture — la route est interdite aux autocars, c’est aussi l’un des plus beaux paysages du voyage.',
@@ -326,6 +364,17 @@ const fr = {
     yan: {
       title: 'Le Kyzyl Koum, une nuit sous la yourte',
       lead: 'Nourata, le lac Aydarkul et le désert à dos de chameau de Bactriane.',
+      history: [
+        'Nourata occupe le site de l’ancienne cité sogdienne de Nour. Alexandre le Grand y fit bâtir une forteresse vers 329 avant notre ère ; depuis ses murs, un sentier mène à des pétroglyphes de l’âge du bronze.',
+        'Le Kyzyl Koum, les « sables rouges », couvre près de trois cent mille kilomètres carrés entre l’Amou-Daria et le Syr-Daria. Les caravanes le traversaient pour relier Boukhara à Khiva, en suivant les puits.',
+        'Le lac Aydarkul, lui, est récent : né en 1969 d’une crue du Syr-Daria, il attire aujourd’hui pêcheurs et oiseaux migrateurs à la lisière du désert.',
+      ],
+      timeline: [
+        { y: '-329', t: 'La forteresse d’Alexandre le Grand à Nourata' },
+        { y: 'Âge du bronze', t: 'Les pétroglyphes des collines de Sarmich' },
+        { y: 'XVIᵉ s.', t: 'La route caravanière Boukhara – Khiva traverse le désert' },
+        { y: '1969', t: 'Naissance du lac Aydarkul' },
+      ],
       intro: [
         'Entre Samarcande et Boukhara s’étend le Kyzyl Koum, les « sables rouges ». La journée commence à Nourata, au pied de la forteresse attribuée à Alexandre le Grand, puis rejoint le lac Aydarkul, né en 1969 d’une crue du Syr-Daria.',
         'Le soir, le campement de yourtes de Yanghikazgan : dîner en plein air, chants d’akyn autour du feu et une nuit sous le ciel le plus étoilé du voyage. Les yourtes accueillent cinq à six personnes.',
@@ -342,6 +391,18 @@ const fr = {
     buk: {
       title: 'Boukhara, la ville-musée',
       lead: 'plus de cent quarante monuments, le minaret Kalon et les coupoles marchandes, trois nuits sur place.',
+      history: [
+        'Le nom vient du sogdien et signifie « lieu fortuné ». Oasis sur la Zarafshan, en bordure du Kyzyl Koum, Boukhara est habitée depuis près de trois mille ans et conserve cent quarante sites classés.',
+        'L’islam y entre en 710. Au Xᵉ siècle, sous les Samanides, la ville devient le foyer intellectuel du monde musulman : la première médersa de l’islam y est bâtie, l’imam Al-Boukhari y compile les hadiths, Ibn Sina — Avicenne — y donne ses premiers cours de médecine avant l’âge de vingt ans.',
+        'Détruite par Gengis Khan en 1220, intégrée à l’empire timouride en 1370, Boukhara est du XVIᵉ au début du XXᵉ siècle la capitale d’un khanat. Des trois cent soixante médersas d’alors, cent dix subsistent aujourd’hui.',
+      ],
+      timeline: [
+        { y: '-500', t: 'L’oasis dans la satrapie perse de Sogdiane' },
+        { y: '710', t: 'La conquête arabe et l’arrivée de l’islam' },
+        { y: 'Xᵉ s.', t: 'Âge d’or samanide : Al-Boukhari, Avicenne' },
+        { y: '1220', t: 'Gengis Khan prend la ville' },
+        { y: '1993', t: 'Le centre historique inscrit à l’UNESCO' },
+      ],
       intro: [
         'Plus de deux mille ans d’histoire et plus de cent quarante monuments classés : le centre historique de Boukhara est inscrit à l’UNESCO depuis 1993. On le parcourt entièrement à pied, des coupoles marchandes au bassin de Liab-i-Khaouz.',
         'Trois nuits sur place, dont deux journées complètes : de quoi voir les monuments majeurs sans courir, et profiter de la vieille ville illuminée le soir, depuis une terrasse.',
@@ -359,6 +420,18 @@ const fr = {
     khi: {
       title: 'Khiva, derrière ses remparts',
       lead: 'l’Itchan Kala, premier site ouzbek inscrit à l’UNESCO, à parcourir à pied.',
+      history: [
+        'La légende attribue la fondation de Khiva à Sem, fils de Noé : traversant le désert à la tête de sa caravane, il aurait bu l’eau d’un puits et se serait écrié « He vôh ». Les systèmes d’irrigation de la région, eux, sont attestés deux millénaires avant notre ère.',
+        'Étape la plus septentrionale de la Route de la Soie, la ville est conquise par les Arabes en 712, devient à partir de 994 le cœur de la principauté du Khorezm, puis, du XVIᵉ au début du XXᵉ siècle, la capitale du khanat de Khiva.',
+        'Le Khorezm a donné au monde Al-Khwarizmi, dont le nom a donné « algorithme » et le traité al-jabr l’algèbre, et Al-Bîrunî, qui décrivait la rotation de la Terre autour de son axe cinq siècles avant Copernic.',
+      ],
+      timeline: [
+        { y: '-2000', t: 'Les premiers systèmes d’irrigation du Khorezm' },
+        { y: '712', t: 'La conquête arabe' },
+        { y: '994', t: 'Khiva, cœur de la principauté du Khorezm' },
+        { y: '1220', t: 'Gengis Khan pille le Khorezm' },
+        { y: '1990', t: 'L’Itchan Kala, premier site ouzbek à l’UNESCO' },
+      ],
       intro: [
         'L’Itchan Kala, la ville intérieure de Khiva, est entièrement ceinte de murailles de pisé. Premier site d’Ouzbékistan inscrit au patrimoine mondial, en 1990, elle concentre médersas, mosquées et palais dans un périmètre que l’on traverse à pied en vingt minutes.',
         'Après la longue route à travers le Kyzyl Koum, une journée complète intra-muros, un déjeuner dans une ancienne médersa et le dîner d’adieu avec spectacle.',

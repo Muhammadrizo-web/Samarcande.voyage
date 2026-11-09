@@ -70,10 +70,29 @@ export function CityPage({ locale, t, city }: ViewProps & { city: CityKey }) {
         </div>
       </section>
 
-      <section className="section screen" data-screen={t.dest.otherCities}>
+      <section className="section screen" data-screen={t.dest.history}>
+        <div className="wrap">
+          <div className="sec-head sec-head--split" data-rv="">
+            <Eyebrow n={3}>{t.dest.history}</Eyebrow>
+            <h2 className="h2">{t.dest.historyTitle}</h2>
+          </div>
+          <div className="city-hist">
+            <div className="city-hist__text" data-rv="">
+              {c.history.map((p, i) => <p key={i}>{p}</p>)}
+            </div>
+            <ol className="tl" data-rv="">
+              {c.timeline.map((e, i) => (
+                <li key={i}><b>{e.y}</b><span>{e.t}</span></li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--tint screen" data-screen={t.dest.otherCities}>
         <div className="wrap">
           <div className="sec-head" data-rv="">
-            <Eyebrow n={3}>{t.dest.otherCities}</Eyebrow>
+            <Eyebrow n={4}>{t.dest.otherCities}</Eyebrow>
             <h2 className="h2">{t.dest.otherCities}</h2>
           </div>
           <CityStrip locale={locale} t={t} keys={others} />
@@ -86,7 +105,7 @@ export function CityPage({ locale, t, city }: ViewProps & { city: CityKey }) {
           '@context': 'https://schema.org',
           '@type': 'TouristDestination',
           name: t.cities[city],
-          description: c.intro.join(' '),
+          description: [...c.intro, c.history[0]].join(' '),
           url: abs(href(locale, { page: 'city', city })),
           touristType: 'Cultural tourism',
           includesAttraction: c.highlights.map((h) => ({ '@type': 'TouristAttraction', name: h })),
