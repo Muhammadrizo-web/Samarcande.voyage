@@ -791,14 +791,6 @@
 .ftr li a:hover { color: var(--gold-ink); }
 .ftr__note { font-size: 13.5px; color: var(--muted); max-width: 36ch; margin-top: 16px; }
 .ftr__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 26px; margin-top: 56px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--muted); }
-.ftr__scene { position: relative; margin-top: 24px; display: grid; justify-items: center; pointer-events: none; user-select: none; }
-.ftr__scene picture { display: block; width: min(760px, 100%); }
-.ftr__scene img {
-  width: 100%; height: auto; display: block; filter: saturate(0.85);
-  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
-}
-[data-theme='dark'] .ftr__scene img { opacity: 0.92; }
 
 /* -------------------------------------------------------------- contact FAB */
 
