@@ -597,6 +597,27 @@ const en: Dictionary = {
     photoCaption: 'In the field — desert fortresses, Khorezm',
   },
 
+  founder: {
+    eyebrow: 'Your host',
+    title: 'Anvar, founder and tour leader',
+    name: 'Anvar',
+    role: 'Founder and French-speaking tour leader',
+    short: [
+      'My name is Anvar. I was born in Bukhara, in the heart of Uzbekistan, and I have been guiding French-speaking travellers for fifteen years.',
+      'French came into our home through my mother: she taught it for thirty-eight years in the schools of our region. I grew up in that world, and it led me naturally to travel and to sharing our culture.',
+      'My aim is not simply to show you Uzbekistan, but to let you truly meet its history, its culture and its people.',
+    ],
+    full: [
+      'Hello, and welcome. My name is Anvar, a French-speaking guide and tour leader from Bukhara, in the heart of Uzbekistan.',
+      'My story with the French language began long before my career: it was my mother who brought it into our home. She spent close to thirty-eight years teaching it in the schools of our region — a long career, in a country where women retire at fifty-four.',
+      'I grew up in that French-speaking world. Her passion for teaching inspired me deeply and led me naturally towards travel and the sharing of our culture.',
+      'Today, with fifteen years of experience alongside French-speaking travellers, I want to show you my country far beyond the standard tourist circuits: the historic treasures of Bukhara, Samarkand and Khiva, but also the villages, the living traditions, the legendary Uzbek hospitality and the landscapes of our country.',
+      'My aim is not simply to show you Uzbekistan, but to let you truly meet its history, its culture and its people.',
+      'I look forward to welcoming you to Uzbekistan.',
+    ],
+    quote: 'A fine journey is not the sum of the places you visit, but of the feelings and the people you share it with.',
+  },
+
   infos: {
     eyebrow: 'Practical info',
     title: 'What people ask us most',

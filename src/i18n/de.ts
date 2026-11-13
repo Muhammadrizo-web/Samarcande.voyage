@@ -597,6 +597,27 @@ const de: Dictionary = {
     photoCaption: 'Unterwegs — Wüstenfestungen in Choresm',
   },
 
+  founder: {
+    eyebrow: 'Ihr Gastgeber',
+    title: 'Anvar, Gründer und Reiseleiter',
+    name: 'Anvar',
+    role: 'Gründer und französischsprachiger Reiseleiter',
+    short: [
+      'Mein Name ist Anvar. Ich bin in Buchara geboren, im Herzen Usbekistans, und begleite seit fünfzehn Jahren französischsprachige Reisende.',
+      'Das Französische kam durch meine Mutter in unser Haus: Sie hat es achtunddreißig Jahre lang an den Schulen unserer Region unterrichtet. In dieser Welt bin ich aufgewachsen, und sie hat mich zum Reisen und zum Erzählen über unsere Kultur geführt.',
+      'Mein Ziel ist nicht, Ihnen Usbekistan nur zu zeigen, sondern Ihnen eine echte Begegnung mit seiner Geschichte, seiner Kultur und seinen Menschen zu ermöglichen.',
+    ],
+    full: [
+      'Guten Tag und herzlich willkommen. Mein Name ist Anvar, ich bin französischsprachiger Reiseleiter und stamme aus Buchara, im Herzen Usbekistans.',
+      'Meine Geschichte mit der französischen Sprache begann lange vor meinem Beruf: Meine Mutter brachte sie in unser Haus. Fast achtunddreißig Jahre lang hat sie Französisch an den Schulen unserer Region unterrichtet — eine lange Laufbahn in einem Land, in dem Frauen mit vierundfünfzig in Rente gehen.',
+      'Ich bin in dieser französischsprachigen Welt aufgewachsen. Ihre Leidenschaft für das Unterrichten hat mich tief geprägt und mich ganz selbstverständlich zum Tourismus und zum kulturellen Austausch geführt.',
+      'Heute, mit fünfzehn Jahren Erfahrung an der Seite französischsprachiger Reisender, möchte ich Ihnen mein Land weit jenseits der üblichen Touristenrouten zeigen: die historischen Schätze von Buchara, Samarkand und Chiwa, aber auch die ursprünglichen Dörfer, die lebendigen Traditionen, die legendäre usbekische Gastfreundschaft und unsere Landschaften.',
+      'Mein Ziel ist nicht, Ihnen Usbekistan nur zu zeigen, sondern Ihnen eine echte Begegnung mit seiner Geschichte, seiner Kultur und seinen Menschen zu ermöglichen.',
+      'Ich freue mich darauf, Sie in Usbekistan zu begrüßen.',
+    ],
+    quote: 'Eine schöne Reise besteht nicht aus den Orten, die man besucht, sondern aus den Gefühlen und den Menschen, mit denen man sie teilt.',
+  },
+
   infos: {
     eyebrow: 'Reiseinfos',
     title: 'Was am häufigsten gefragt wird',
