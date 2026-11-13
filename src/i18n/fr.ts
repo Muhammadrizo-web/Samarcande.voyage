@@ -597,6 +597,27 @@ const fr = {
     photoCaption: 'Sur le terrain — forteresses du désert, Khorezm',
   },
 
+  founder: {
+    eyebrow: 'Votre hôte',
+    title: 'Anvar, fondateur et guide-accompagnateur',
+    name: 'Anvar',
+    role: 'Fondateur et guide-accompagnateur francophone',
+    short: [
+      'Je m’appelle Anvar. Je suis né à Boukhara, au cœur de l’Ouzbékistan, et j’accompagne des voyageurs francophones depuis quinze ans.',
+      'Le français est entré chez nous par ma mère : elle l’a enseigné trente-huit ans dans les écoles de notre région. J’ai grandi dans cet univers, et il m’a naturellement conduit vers le tourisme et le partage culturel.',
+      'Mon objectif n’est pas simplement de vous faire visiter l’Ouzbékistan, mais de vous faire vivre une véritable rencontre avec son histoire, sa culture et ses habitants.',
+    ],
+    full: [
+      'Bonjour et bienvenue. Je m’appelle Anvar, guide-accompagnateur francophone originaire de Boukhara, au cœur de l’Ouzbékistan.',
+      'Mon histoire avec la langue française a commencé bien avant ma carrière professionnelle : c’est ma mère qui l’a fait entrer chez nous. Elle a consacré près de trente-huit années à l’enseigner dans les écoles de notre région — une longue carrière, dans un pays où les femmes prennent leur retraite à cinquante-quatre ans.',
+      'J’ai grandi dans cet univers francophone. Sa passion pour l’enseignement m’a profondément inspiré et m’a naturellement conduit vers le monde du tourisme et du partage culturel.',
+      'Aujourd’hui, fort de quinze années d’expérience auprès des voyageurs francophones, je souhaite vous faire découvrir mon pays bien au-delà des circuits touristiques classiques : les trésors historiques de Boukhara, de Samarcande et de Khiva, mais aussi les villages authentiques, les traditions locales, l’hospitalité légendaire des Ouzbeks et les paysages magnifiques de notre pays.',
+      'Mon objectif n’est pas simplement de vous faire visiter l’Ouzbékistan, mais de vous faire vivre une véritable rencontre avec son histoire, sa culture et ses habitants.',
+      'Au plaisir de vous accueillir en Ouzbékistan !',
+    ],
+    quote: 'Un beau voyage ne se résume pas aux lieux que l’on visite, mais surtout aux émotions et aux rencontres que l’on partage.',
+  },
+
   infos: {
     eyebrow: 'Infos pratiques',
     title: 'Ce qu’on nous demande le plus',

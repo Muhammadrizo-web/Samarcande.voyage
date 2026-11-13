@@ -2,7 +2,7 @@ import { SITE } from '@/content/site';
 import { href } from '@/lib/i18n';
 import { breadcrumbLd } from '@/lib/seo';
 import { Breadcrumb, CtaBand, Eyebrow, SectionHead } from '@/components/Blocks';
-import { Pillars } from '@/components/Sections';
+import { Pillars, FounderNote } from '@/components/Sections';
 import { JsonLd } from '@/components/JsonLd';
 import { Picture } from '@/components/Picture';
 import { Info } from '@/components/Icons';
@@ -37,16 +37,20 @@ export function AgencyPage({ locale, t }: ViewProps) {
         </div>
       </section>
 
-      <section className="section section--tint screen" data-screen={t.trust.eyebrow}>
+      <section className="section section--tint screen" data-screen={t.founder.eyebrow}>
+        <div className="wrap"><FounderNote locale={locale} t={t} n={1} full /></div>
+      </section>
+
+      <section className="section screen" data-screen={t.trust.eyebrow}>
         <div className="wrap">
-          <SectionHead eyebrow={t.trust.eyebrow} n={1} title={t.trust.title} />
+          <SectionHead eyebrow={t.trust.eyebrow} n={2} title={t.trust.title} />
           <Pillars t={t} />
         </div>
       </section>
 
-      <section className="section screen" id="avis" data-screen={t.agency.factsTitle}>
+      <section className="section section--tint screen" id="avis" data-screen={t.agency.factsTitle}>
         <div className="wrap wrap--narrow">
-          <SectionHead eyebrow={t.agency.factsTitle} n={2} title={t.agency.factsTitle} />
+          <SectionHead eyebrow={t.agency.factsTitle} n={3} title={t.agency.factsTitle} />
           <div className="facts" data-rv="">
             {facts.map((f) => <div key={f.t}><b>{f.t}</b><p>{f.d}</p></div>)}
           </div>

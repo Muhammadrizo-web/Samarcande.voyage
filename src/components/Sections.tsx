@@ -162,6 +162,36 @@ export function PassionBlock({ locale, t, n }: { locale: Locale; t: Dictionary; 
   );
 }
 
+/**
+ * Mot du fondateur : version courte sur l'accueil, lettre complète sur la page agence.
+ * Le portrait d'Anvar n'étant pas encore fourni, le bloc tient sans photo.
+ */
+export function FounderNote({ locale, t, n, full }: { locale: Locale; t: Dictionary; n?: number; full?: boolean }) {
+  const f = t.founder;
+  return (
+    <div className={`fnd${full ? ' fnd--full' : ''}`}>
+      <div className="fnd__text">
+        <SectionHead eyebrow={f.eyebrow} n={n} title={f.title} />
+        <div className="fnd__body">
+          {(full ? f.full : f.short).map((p, i) => <p key={i} className="fnd__p" data-rv="">{p}</p>)}
+        </div>
+        <p className="fnd__sign" data-rv="">
+          <b>{f.name}</b>
+          <span>{f.role}</span>
+        </p>
+        {!full && (
+          <div data-rv="">
+            <Link href={href(locale, 'agency')} className="link-arrow">{t.nav.agency} <Arrow /></Link>
+          </div>
+        )}
+      </div>
+      <blockquote className="fnd__quote" data-rv="">
+        <p>{f.quote}</p>
+      </blockquote>
+    </div>
+  );
+}
+
 export function Marquee({ t }: { t: Dictionary }) {
   const items = (['tas', 'sam', 'shk', 'yan', 'buk', 'khi'] as const).map((k) => t.cities[k]);
   const row = [...items, ...items];

@@ -57,6 +57,31 @@
 .city-detail { display: grid; gap: clamp(32px, 4vw, 64px); }
 @media (min-width: 1000px) { .city-detail { grid-template-columns: 0.9fr 1.1fr; align-items: center; } }
 
+/* ------------------------------------------------- mot du fondateur (Anvar) */
+
+.fnd { display: grid; gap: clamp(26px, 3.4vw, 54px); align-items: start; }
+@media (min-width: 1000px) { .fnd { grid-template-columns: 1.35fr 0.65fr; align-items: center; } }
+.fnd__text { display: grid; gap: clamp(10px, 1.6vh, 18px); }
+.fnd__p { color: var(--ink-2); font-size: clamp(15px, 1.15vw, 17.5px); line-height: 1.62; max-width: 64ch; }
+.fnd__sign { display: grid; gap: 2px; margin-top: clamp(6px, 1.2vh, 14px); }
+.fnd__sign b { font-family: var(--f-display); font-style: italic; font-weight: 600; font-size: clamp(21px, 1.9vw, 27px); color: var(--ink); }
+.fnd__sign span { font-size: 12.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.fnd__quote { border-left: 2px solid var(--gold); padding: clamp(10px, 1.6vh, 18px) 0 clamp(10px, 1.6vh, 18px) clamp(18px, 2vw, 28px); }
+.fnd__quote p { font-family: var(--f-display); font-style: italic; font-size: clamp(19px, 1.9vw, 26px); line-height: 1.34; color: var(--ink); }
+.fnd__body { display: grid; gap: clamp(9px, 1.5vh, 16px); }
+@media (min-width: 1000px) {
+  .fnd--full { grid-template-columns: 1fr 0.58fr; align-items: start; }
+  .fnd--full .fnd__body { display: block; columns: 2; column-gap: clamp(26px, 2.6vw, 44px); }
+  .fnd--full .fnd__body p { break-inside: avoid; margin-bottom: clamp(9px, 1.4vh, 15px); max-width: none; }
+  .fnd--full .fnd__p { font-size: clamp(14px, 1vw, 16px); line-height: 1.58; }
+}
+/* en mode « une section = un écran » : lettre resserrée */
+@media (min-width: 1024px) and (min-height: 600px) {
+  .screen .fnd__p { font-size: clamp(13.5px, 0.95vw, 15.5px); line-height: 1.55; }
+  .screen .fnd__quote p { font-size: clamp(17px, 1.5vw, 22px); }
+  .screen .fnd__sign b { font-size: clamp(19px, 1.6vw, 23px); }
+}
+
 /* ----------------------------------------- histoire de la ville + chronologie */
 
 .city-hist { display: grid; gap: clamp(28px, 3.5vw, 56px); align-items: start; }
